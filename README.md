@@ -1,8 +1,9 @@
 # vue-table-tree
 
-## Project setup
+## Project setup1
 ```
-npm install
+<script src="./../dist/vue-table-tree.umd.min.js"></script>
+详情demo 见deme/tree.html
 ```
 
 ### Compiles and hot-reloads for development

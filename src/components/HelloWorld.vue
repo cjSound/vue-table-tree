@@ -1,19 +1,19 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-     <tableTree class="table"   :dataList="dataList" :title="'keys'"
-      :id="'id'" :name="'displayName'" :parentKey="'pid'" :rootKey="''" :expanded="'isExpanded'">
-       <div slot="类型" slot-scope="{item}">
-          {{item.displayType}}
-       </div>
-       <div slot="值" slot-scope="{item}">
-          {{item.value}}
-       </div>
-       <div slot="操作" slot-scope="{item}">
-          <span @click="test(item)">编辑</span>
-          <span @click="test(item)">删除</span>
-       </div>
-     </tableTree>
+     <table-tree class="table"   :data-list="dataList" :title="'keys'"
+          :id="'id'" :name="'displayName'" :parent-key="'pid'" :root-key="''" :expanded="'isExpanded'">
+          <div slot="类型" slot-scope="{item}">
+              {{item.displayType}}
+          </div>
+          <div slot="值" slot-scope="{item}">
+              {{item.value}}
+          </div>
+          <div slot="操作" slot-scope="{item}">
+              <span @click="test(item)">编辑</span>
+              <span @click="test(item)">删除</span>
+          </div>
+      </table-tree>
   </div>
 </template>
 
