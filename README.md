@@ -35,7 +35,7 @@ Add to other Vue components
 ```  
 #### script 
 
-    # install with npm    
+    # 直接通过标签引用 具体可以参考demo/tree.html    
 	<script src="./vue-lazy-table-tree.umd.min.js"></script>
     
 [tree.html](https://cjsound.github.io/vue-table-tree/demo/tree.html).
