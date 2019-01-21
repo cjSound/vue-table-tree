@@ -4,8 +4,8 @@
 ```
 <script src="./../dist/vue-table-tree.umd.min.js"></script>
 详情见deme/tree.html
- [tree.html](https://cjsound.github.io/vue-table-tree/demo/tree.html).
 ```
+[tree.html](https://cjsound.github.io/vue-table-tree/demo/tree.html).
 ## Project setup2
 ```
 
