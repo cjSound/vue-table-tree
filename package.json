@@ -1,7 +1,6 @@
 {
-  "name": "vue-table-tree",
+  "name": "vue-lazy-table-tree",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "dev": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
@@ -11,6 +10,9 @@
   "dependencies": {
     "vue": "^2.5.21"
   },
+  "author": "cjSound",
+  "main": "dist/vue-table-tree.common.js",
+  "unpkg": "dist/vue-table-tree.umd.min.js",
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.3.0",
     "@vue/cli-service": "^3.3.0",
