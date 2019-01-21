@@ -82,9 +82,9 @@ export default {
                         break;
                     }
                 }
-                item.open=false;
+                this.$set(this.childList[index],'open',false);
             }else{
-                if((index+1)<this.childList.length && item.left >=this.childList[index+1].left){
+                if(index==this.childList.length-1 ||((index+1)<this.childList.length && item.left >=this.childList[index+1].left)){
                     var list =this.getChild(item[this.id],item.left+this.left);
                     if(list.length>0){
                         var arrC =this.cloneObj(this.childList);
@@ -132,6 +132,7 @@ export default {
                 if(this.dataList[i][this.parentKey] == pid){
                     var item = this.cloneObj(this.dataList[i]);
                     item.showItem =true;
+                    item.open=false;
                     if(left){
                         item.left= left;
                     }
