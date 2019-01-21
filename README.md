@@ -1,5 +1,11 @@
 # vue-table-tree
-
+<p align="center">
+<a  href="https://www.npmjs.com/package/vue-lazy-table-tree" target="_blank"><img src="https://img.shields.io/npm/v/vue-lazy-table-tree.svg"/ ></a> 
+<a href="https://vuejs.org/"><img src="https://img.shields.io/badge/vue-2.2.x-brightgreen.svg"/></a>
+</p>
+<p align="center">
+<a  href="https://cjsound.github.io/vue-table-tree/demo/tree.html" target="_blank">演示地址</a> 
+</p>
 ## Project setup1
 ```
 <script src="./../dist/vue-table-tree.umd.min.js"></script>
