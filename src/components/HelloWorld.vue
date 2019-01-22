@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { data ,data2} from './data.js'
+import { data } from './data.js'
 import tableTree from './table-tree'
 
 export default {

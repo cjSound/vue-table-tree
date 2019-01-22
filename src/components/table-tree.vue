@@ -158,6 +158,9 @@ export default {
         }
     }
     .tabody{
+        .el-pagination{
+            text-align: center;
+        }
         .row-item{
             border-bottom: 1px solid #ebeef5;
             border-right: 1px solid #ebeef5;

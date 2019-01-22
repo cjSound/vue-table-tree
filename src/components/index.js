@@ -5,7 +5,6 @@ const VuePlug = {
     TableTree
 }
 
-// module.exports = VueGridLayout;
 
 Object.keys(VuePlug).forEach(name => {
     Vue.component(name, VuePlug[name]);
