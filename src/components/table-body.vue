@@ -1,16 +1,41 @@
 <template >
-    <tbody>
-        <table-item  v-for="(item,index) in childList" :key="index" :index="index" 
-             :item ="item"  @showTog="showTog" v-if="item.showItem"
-            >
-        </table-item>
-    </tbody>
+    <div>
+        <div v-if="dataList.length<10" >
+            <table-item  v-for="(item,index) in dataList" :key="index" :index="index" 
+                :width-array="widthArray" :childenname="childenname" :name="name" :slotMap ="slotMap"
+                :step="step" :left="left"
+                :item ="item"  >
+            </table-item>
+        </div>
+        
+        <div class="table-page" v-else>
+            <table-item  v-if="pageList.length>0" v-for="(item,index) in pageList" :key="index" :index="index" 
+                :width-array="widthArray" :childenname="childenname" :name="name" :slotMap ="slotMap"
+                :step="step" :left="left"
+                :item ="item"  >
+            </table-item>
+
+            <el-pagination
+            :current-page.sync="pageIndex"
+            :page-size="pageNum"
+            @current-change="init"
+            layout="total,prev, pager, next"
+            :total="dataList.length">
+            </el-pagination>
+        </div>
+    </div>
 </template>
 
 <script>
+import store from './store'
+import {Pagination} from 'element-ui'
 import tableItem from './table-item.js'
+import Vue from 'vue'
+Vue.use(Pagination)
+
 export default {
-    name:'table-body',
+    name:'tableBody',
+    store,
     props:{
         slotMap:{
             type:Object,
@@ -18,8 +43,19 @@ export default {
                 return {}
             }
         },
+        left:{
+            type:Number,
+            default:5
+        },
+        step:{
+            required:true
+        },
         pid:{
             required: true
+        },
+        childenname:{
+            type:String,
+            default:'children'
         },
         id:{
             type:String,
@@ -45,21 +81,46 @@ export default {
             default:function(){
                 return  []
             }
+        },
+        widthArray:{
+            type:Array,
+            default:function(){
+                return  []
+            }
+        },
+    },
+    watch:{
+        dataList:{
+            handler(newVal,oldVal){
+                this.pageIndex =1;
+                this.init();
+            },
+            deep:true
         }
     },
     components:{tableItem},
     data(){
         return{
+            pageIndex:1,
             childList:[],
-            expanded:'',
-            left:''
+            pageList:[],
+            pageNum:10
         }
     },
     methods:{
-        init(){
-            var parent = this.$parent;
-            this.expanded  =parent.expanded;
-            this.left =parent.left;
+        init(num){
+            var index =num==null?this.pageIndex:num;
+            var page =this.pageNum;
+            if(this.dataList.length>page){
+                var arr =[];
+                var start =(index-1) * page;
+                for(var i =0;i<page;i++){
+                    if(start+i<this.dataList.length){
+                        arr.push(this.cloneObj(this.dataList[start+i]));
+                    }
+                }
+                this.$set(this,'pageList',arr);
+            }
         },
         cloneObj(obj) {
             var newObj = {};
@@ -72,79 +133,12 @@ export default {
             }
             return newObj;
         },
-        showTog(index){
-            var item =this.childList[index];
-            if(item.open){
-                for(var i =index+1;i<this.childList.length;i++){
-                    if(this.childList[i].left>item.left){
-                        this.childList[i].showItem =false;
-                    }else{
-                        break;
-                    }
-                }
-                this.$set(this.childList[index],'open',false);
-            }else{
-                if(index==this.childList.length-1 ||((index+1)<this.childList.length && item.left >=this.childList[index+1].left)){
-                    var list =this.getChild(item[this.id],item.left+this.left);
-                    if(list.length>0){
-                        var arrC =this.cloneObj(this.childList);
-                        var array = arrC.splice(0,index+1).concat(list,arrC);
-                        this.$set(this,'childList',array);    
-                    }else{
-                        this.$set(this.childList[index],'noChild',true);
-                    }
-                }else{
-                    for(var i =index+1;i<this.childList.length;i++){
-                        if(this.childList[i].left>item.left){
-                            this.childList[i].showItem =true;
-                        }else{
-                            break;
-                        }
-                    }
-                }
-                this.childList[index].open=true;
-            }
-        },
-        getChildList(){
-            var list =this.getChild(this.pid);
-            for(var i in list){
-                list[i].left=0;
-                this.childList.push(list[i]);
-                if(this.expanded!='' && list[i][this.expanded]){
-                    var lists =this.getChild(list[i][this.id]);
-                    if(lists.length>0){
-                        list[i].open=true;
-                        for(var j in lists){
-                            lists[j].left= list[i].left+this.left;
-                            this.childList.push(lists[j]);
-                        }
-                    }
-                    
-                }
-            }
-        },
-        pushChild(item,index){
-
-        },
-        getChild(pid,left){
-            var list =[];
-            for(var  i in this.dataList){
-                if(this.dataList[i][this.parentKey] == pid){
-                    var item = this.cloneObj(this.dataList[i]);
-                    item.showItem =true;
-                    item.open=false;
-                    if(left){
-                        item.left= left;
-                    }
-                    list.push(item);
-                }
-            }
-            return list;
-        }
     },
     mounted(){
+        this.pageNum =this.$store.state.pageNum;
         this.init();
-        this.getChildList();
+        
+
     }
 }
 </script>

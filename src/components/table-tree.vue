@@ -1,24 +1,22 @@
 <template>
     <div class="table-tree">
-        <table cellspacing="0" cellpadding="0" border="0">
-            <thead class="table-tree-header">
-                <tr>
-                    <th>{{title}}</th>
-                    <th v-for="(item,index) in $scopedSlots" :key="index"> {{index}}</th>
-                </tr>
-            </thead>
-            <table-body :pid="rootKey" :slotMap ="$scopedSlots"  :dataList="dataList" 
-                :id="id" :name="name" :parentKey="parentKey">
-            </table-body>
-        </table>
+        <div class="tab-row table-tree-header" v-if="widthArray.length>0">
+            <div class="row-item" :style="{'width':widthArray[0]+'%'}">  {{title}}</div>
+            <div class="row-item" v-for="(item,index) in titleArray" :style="{'width':widthArray[index+1]+'%'}">{{item}}</div>
+        </div>
+        <table-body  v-if="open" class="tabody" :pid="rootKey" :slotMap ="$scopedSlots"  :dataList="dataList" 
+            :width-array="widthArray" :childenname="childenname" :left="left" :step="left"
+            :id="id" :name="name" :parentKey="parentKey">
+        </table-body>
     </div>
 </template>
 
 <script>
-
+import store from './store'
 import tableBody from  './table-body'
 export default {
     components:{tableBody},
+    store,
     props:{
         //key展示的标题
         title:{
@@ -39,6 +37,10 @@ export default {
             type:Number,
             default:5
         },
+        page:{
+            type:Number,
+            default:10
+        },
         //展示的名称
         name:{
             type:String,
@@ -49,10 +51,20 @@ export default {
             type:String,
             default:'pid'
         },
+        childenname:{
+            type:String,
+            default:'children'
+        },
         //是否有默认展开配置 需要则去查找
         expanded:{
             type:String,
             default:''
+        },
+        widths:{
+            type:Array,
+            default:function(){
+                return [];
+            }
         },
         dataList:{
             type:Array,
@@ -61,10 +73,40 @@ export default {
             }
         }
     },
+    data(){
+        return {
+            widthArray:[],
+            titleArray:[],
+            open:false
+        }
+    },
     methods:{
-
+        initConfig(){
+            this.$store.commit('setPageNum',this.page);
+            this.$store.commit('setLeft',this.left);
+            this.$store.commit('setName',this.name);
+            this.$store.commit('setChildenname',this.childenname);
+            this.$store.commit('setWidths',this.widths);
+            this.open=true;
+        }
     },
     mounted(){
+        var _this =this ;
+        var slots   =this.$scopedSlots;
+        this.titleArray =Object.keys(slots);
+        this.$nextTick(()=>{
+            if(this.widths.length==0){
+                var num =this.titleArray.length+1;
+                var arr =[];
+                for(var i =0;i<num;i++){
+                    this.widthArray.push(100/num);
+                }
+            }else{
+                this.widthArray =this.widths;
+            }
+            this.initConfig();
+        })
+        
     }
 
 }
@@ -84,13 +126,19 @@ export default {
     table{
         width: 100%;
     }
-    tr{
+    .tab-row{
         background: #f5f7fa;
+        overflow: hidden;
+        width: 100%;
+        .row-item{
+            float: left;
+            height: 47px;
+        }
     }
     .table-tree-header{
         color: #909399;
         font-weight: 500;
-        th{
+        .row-item{
             white-space: nowrap;
             overflow: hidden;
             user-select: none;
@@ -109,8 +157,8 @@ export default {
             border-left: 1px solid #ebeef5;
         }
     }
-    tbody{
-        td{
+    .tabody{
+        .row-item{
             border-bottom: 1px solid #ebeef5;
             border-right: 1px solid #ebeef5;
             padding: 12px 0;
@@ -121,13 +169,13 @@ export default {
             position: relative;
             text-align: center;
         }
-        tr{
+        .tab-row{
             background: #f5f7fa;
         }
         .last-child{
             background: #ffffff;
         }
-        td:first-child{
+        .row-item:first-child{
             border-left: 1px solid #ebeef5;
             cursor: pointer;
             text-align: left;

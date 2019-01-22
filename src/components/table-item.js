@@ -1,9 +1,26 @@
+import store from './store'
+import tableBody from  './table-body' 
 export default {
+    components:{tableBody},
+    store,
     props: {
+        slotMap:{
+            type:Object,
+            default:function(){
+                return {}
+            }
+        },
         item: {
             required: true
         },
         index:{
+            required:true
+        },
+        left:{
+            type:Number,
+            default:5
+        },
+        step:{
             required:true
         },
         itemArray: {
@@ -12,45 +29,71 @@ export default {
                 return []
             }
         },
+        name:{
+            type:String,
+            default:'name'
+        },
+        childenname:{
+            type:String,
+            default:'children'
+        },
+        widthArray:{
+            type:Array,
+            default:function(){
+                return  []
+            }
+        },
     },
     data(){
         return {
-            open:false
+            open:true,
+            pageNum:10
         }
     },
     render(h) {
-        const parent = this.$parent;
-        const key =parent.name;
+        this.pageNum =this.$store.state.pageNum;
+        const key =this.name;
         const item =this.item;
-        const slotMap =parent.slotMap;
+        const slotMap =this.slotMap;
+        const widthArray =this.widthArray;
         return (
-            <tr class={{'last-child':item.noChild}}>
-                <td  onClick={() => this.showTog()}  >
-                    <span style={{'padding-left':item.left+'px'}}></span>
-                    {item.noChild?<span>&nbsp;</span>:
-                    <span  class={{
-                        'icon iconfont':true,
-                        'icon-xiajiantou':item.open,
-                        'icon-youjiantou':!item.open
-                    }} 
-                        ></span>}
-                      
-                    {item[key]}{item.showItem}
-                </td>
-                {Object.keys(slotMap).map((i)=>{
-                    return (
-                        <td>{slotMap[i]({item})}</td>
-                    )
-                })}
-            </tr>
+            <div>
+                <div class={{'tab-row':true,'last-child':item.children==null || item.children.length ==0}}>
+                    <div class="row-item"  onClick={() => this.showTog()} style={{'width':widthArray[0]+'%'}}  >
+                        <span style={{'padding-left':this.left+'px'}}></span>
+                        {
+                            item.children==null || item.children.length ==0 ?<span>&nbsp;</span>:
+                            <span  class={{
+                                'icon iconfont':true,
+                                'icon-xiajiantou':item.open,
+                                'icon-youjiantou':!item.open
+                            }}>
+                            </span>
+                        }
+                        
+                        {item[key]}{item.showItem}
+                    </div>
+                    {Object.keys(slotMap).map((i,index)=>{
+                        return (
+                            <div class="row-item" style={{'width':widthArray[index+1]+'%'}}>{slotMap[i]({item})}</div>
+                        )
+                    })}
+                </div>
+                {
+                    this.open && item.children!=null && item.children.length >0? 
+                    <tableBody  class="tabody" pid={this.rootKey} slotMap ={this.slotMap}  dataList={item.children} 
+                        width-array={this.widthArray} childenname={this.childenname}
+                        step={this.step } left={this.left+this.step}
+                        name={this.name}  >
+                    </tableBody> : ''
+                }
+            </div>
         )
         
     },
     methods:{
         showTog(){
-            if(!this.item.noChild){
-                this.$emit('showTog',this.index)
-            }
+            this.open=!this.open;
         }
     }
 }
