@@ -11,7 +11,8 @@ const store = new Vuex.Store({
       childenname:'',
       name:'',
       widths:'',
-      expanded:''
+      expanded:'',
+      init:true
     },
     mutations: {
       setPageNum:function(state,info){
@@ -30,6 +31,7 @@ const store = new Vuex.Store({
         state.widths=info;
       },
       setExpanded:function(state,info){
+        console.log("set Expangd")
         state.expanded=info;
       },
       

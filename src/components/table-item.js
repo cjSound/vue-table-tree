@@ -1,8 +1,10 @@
-import store from './store'
+import { mapGetters }   from 'vuex'
 import tableBody from  './table-body' 
 export default {
     components:{tableBody},
-    store,
+    computed:{
+        ...mapGetters(['pageNum','expanded']),
+    },
     props: {
         slotMap:{
             type:Object,
@@ -53,19 +55,17 @@ export default {
     data(){
         return {
             open:true,
-            pageNum:10,
             keyArray:[]
         }
     },
     render(h) {
         this.keyArray=this.keys.concat(this.index);
-        this.pageNum =this.$store.state.pageNum;
         const key =this.name;
         const item =this.item;
         const slotMap =this.slotMap;
         const widthArray =this.widthArray;
         const keys =this.keyArray;
-        
+        // console.log(2,this.open,this.item.id,this.item.displayName)
         return (
             <div>
                 <div class={{'tab-row':true,'last-child':item.children==null || item.children.length ==0}}>
@@ -90,8 +90,8 @@ export default {
                     })}
                 </div>
                 {
-                    this.open && item.children!=null && item.children.length >0? 
-                    <tableBody  class="tabody" pid={this.rootKey} slotMap ={this.slotMap}  dataList={item.children} 
+                    (  item.children!=null && item.children.length) >0? 
+                    <tableBody  class={{'tabody':true,'ishidden':!this.open}} pid={this.rootKey} slotMap ={this.slotMap}  dataList={item.children} 
                         width-array={this.widthArray} childenname={this.childenname}
                         step={this.step } left={this.left+this.step}
                         keys={this.keyArray}
@@ -102,10 +102,9 @@ export default {
         )
         
     },
-    mounted(){
-        const expanded =this.$store.state.expanded;
-        if(expanded!=''){
-            this.open= this.item[expanded]?true:false;
+    created(){
+        if(this.expanded!=''){
+            this.open= this.item[this.expanded]?true:false;
         }
     },
     methods:{

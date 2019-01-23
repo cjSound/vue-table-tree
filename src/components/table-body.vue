@@ -1,5 +1,5 @@
 <template >
-    <div>
+    <div >
         <div v-if="dataList.length<10" >
             <table-item  v-for="(item,index) in dataList" :key="index" :index="index" 
                 :width-array="widthArray" :childenname="childenname" :name="name" :slotMap ="slotMap"
@@ -27,15 +27,17 @@
 </template>
 
 <script>
-import store from './store'
 import {Pagination} from 'element-ui'
 import tableItem from './table-item.js'
+import { mapGetters }   from 'vuex'
 import Vue from 'vue'
 Vue.use(Pagination)
 
 export default {
     name:'tableBody',
-    store,
+    computed:{
+        ...mapGetters(['pageNum']),
+    },
     props:{
         slotMap:{
             type:Object,
@@ -110,13 +112,13 @@ export default {
             pageIndex:1,
             childList:[],
             pageList:[],
-            pageNum:10
         }
     },
     methods:{
         init(num){
             var index =num==null?this.pageIndex:num;
             var page =this.pageNum;
+            
             if(this.dataList.length>page){
                 var arr =[];
                 var start =(index-1) * page;
@@ -126,6 +128,8 @@ export default {
                     }
                 }
                 this.$set(this,'pageList',arr);
+
+                // console.log('分页信息 ',this.pageList)
             }
         },
         cloneObj(obj) {
@@ -141,10 +145,7 @@ export default {
         },
     },
     mounted(){
-        this.pageNum =this.$store.state.pageNum;
         this.init();
-        
-
     }
 }
 </script>

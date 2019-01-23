@@ -139,6 +139,9 @@ export default {
             height: 47px;
         }
     }
+    .ishidden{
+        display: none;
+    }
     .table-tree-header{
         color: #909399;
         font-weight: 500;
