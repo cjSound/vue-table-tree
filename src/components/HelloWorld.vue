@@ -2,7 +2,7 @@
 	<div class="hello">
 		<h1 @click="test1">{{ msg }}</h1>
 		<table-tree :data-list="dataList"   :name="'displayName'" :expanded="'isExpanded'"
-			:left='10' :page="5"
+			:left='10' :page="15"
 			:parent-key="'pid'"  title="值" class="table">
 			<div slot="类型"  slot-scope="{item}">{{item.displayType}}</div>
 			<div slot="值" slot-scope="{item}">{{item.value}}</div>
@@ -26,7 +26,7 @@ export default {
 	},
 	data() {
 		return {
-      		dataList: data,
+      		dataList: bigdata,
 			// bigdata :data2,
 			widths:[40,20,20,20]
 		}

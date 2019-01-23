@@ -35,10 +35,6 @@ export default {
             type:String,
             default:'name'
         },
-        childenname:{
-            type:String,
-            default:'children'
-        },
         widthArray:{
             type:Array,
             default:function(){
@@ -55,8 +51,8 @@ export default {
     watch:{
         item:{
             handler:function(newVal,oldVal){
-                // console.log('item ',newVal,oldVal)
-                if(newVal[this.childenname].length>this.pageNum){
+                // console.log('item ',newVal,oldVal,this.childenname,newVal[this.childenname])
+                if(newVal[this.childenname]!=null && newVal[this.childenname].length>this.pageNum){
                     this.watchChange =false;
                     this.$nextTick(()=>{
                         this.watchChange =true;

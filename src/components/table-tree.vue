@@ -5,7 +5,7 @@
             <div class="row-item" v-for="(item,index) in titleArray" :style="{'width':widthArray[index+1]+'%'}">{{item}}</div>
         </div>
         <table-body  v-if="open" class="tabody" :pid="rootKey" :slotMap ="$scopedSlots"  :dataList="dataList" 
-            :width-array="widthArray" :childenname="childenname" :left="left" :step="left"
+            :width-array="widthArray"   :left="left" :step="left"
             :keys="keys"
             :id="id" :name="name" :parentKey="parentKey">
         </table-body>
