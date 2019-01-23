@@ -89,6 +89,8 @@ export default {
             this.$store.commit('setName',this.name);
             this.$store.commit('setChildenname',this.childenname);
             this.$store.commit('setWidths',this.widths);
+            this.$store.commit('setExpanded',this.expanded);
+            
             this.open=true;
         }
     },

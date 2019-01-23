@@ -13,7 +13,7 @@
         <div id="app">
             <h1 @click="test1">{{ msg }}</h1>
             <table-tree :data-list="dataList"   :id="'id'" :name="'displayName'" 
-                :left='10' :page="5" :widths="widths"
+                :left='10' :page="5" :widths="widths" :expanded="'isExpanded'"
                 :parent-key="'pid'" :root-key="''" title="值" class="table">
                 <div slot="类型"  slot-scope="{item}">{{item.displayType}}</div>
                 <div slot="值" slot-scope="{item}">{{item.value}}</div>

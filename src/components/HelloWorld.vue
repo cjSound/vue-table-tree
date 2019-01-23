@@ -1,7 +1,7 @@
 <template>
 	<div class="hello">
 		<h1 @click="test1">{{ msg }}</h1>
-		<table-tree :data-list="dataList"   :name="'displayName'" 
+		<table-tree :data-list="dataList"   :name="'displayName'" :expanded="'isExpanded'"
 			:left='10' :page="5"
 			:parent-key="'pid'"  title="值" class="table">
 			<div slot="类型"  slot-scope="{item}">{{item.displayType}}</div>

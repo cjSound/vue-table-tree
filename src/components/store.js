@@ -10,7 +10,8 @@ const store = new Vuex.Store({
       left:10,
       childenname:'',
       name:'',
-      widths:''
+      widths:'',
+      expanded:''
     },
     mutations: {
       setPageNum:function(state,info){
@@ -28,6 +29,10 @@ const store = new Vuex.Store({
       setWidths:function(state,info){
         state.widths=info;
       },
+      setExpanded:function(state,info){
+        state.expanded=info;
+      },
+      
     },
     actions: {
   
@@ -38,6 +43,7 @@ const store = new Vuex.Store({
         widths: state=>state.widths,
         childenname: state=>state.childenname,
         name: state=>state.name,
+        expanded:state=>state.expanded,
         
     }
 })

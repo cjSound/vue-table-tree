@@ -65,6 +65,7 @@ export default {
         const slotMap =this.slotMap;
         const widthArray =this.widthArray;
         const keys =this.keyArray;
+        
         return (
             <div>
                 <div class={{'tab-row':true,'last-child':item.children==null || item.children.length ==0}}>
@@ -102,7 +103,10 @@ export default {
         
     },
     mounted(){
-        
+        const expanded =this.$store.state.expanded;
+        if(expanded!=''){
+            this.open= this.item[expanded]?true:false;
+        }
     },
     methods:{
         showTog(){
