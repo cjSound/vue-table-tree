@@ -1,6 +1,6 @@
 <template >
-    <div >
-        <div v-if="dataList.length<10" >
+    <div  v-if="pageNum>0">
+        <div v-if="dataList.length<=pageNum" >
             <table-item  v-for="(item,index) in dataList" :key="index" :index="index" 
                 :width-array="widthArray" :childenname="childenname" :name="name" :slotMap ="slotMap"
                 :step="step" :left="left" :keys="keys"
@@ -8,7 +8,7 @@
             </table-item>
         </div>
         
-        <div class="table-page" v-else>
+        <div class="table-page" v-else> 
             <table-item  v-if="pageList.length>0" v-for="(item,index) in pageList" :key="index" :index="index" 
                 :width-array="widthArray" :childenname="childenname" :name="name" :slotMap ="slotMap"
                 :step="step" :left="left" :keys="keys"
@@ -37,6 +37,8 @@ export default {
     name:'tableBody',
     computed:{
         ...mapGetters(['pageNum']),
+    },
+    created(){
     },
     props:{
         slotMap:{
@@ -97,37 +99,30 @@ export default {
             }
         },
     },
-    watch:{
-        dataList:{
-            handler(newVal,oldVal){
-                this.pageIndex =1;
-                this.init();
-            },
-            deep:true
-        }
-    },
     components:{tableItem},
     data(){
         return{
             pageIndex:1,
             childList:[],
-            pageList:[],
+            pageList:[]
         }
     },
     methods:{
         init(num){
             var index =num==null?this.pageIndex:num;
             var page =this.pageNum;
-            
             if(this.dataList.length>page){
-                var arr =[];
-                var start =(index-1) * page;
-                for(var i =0;i<page;i++){
-                    if(start+i<this.dataList.length){
-                        arr.push(this.cloneObj(this.dataList[start+i]));
+                this.$nextTick(()=>{
+                    var arr =[];
+                    var start =(index-1) * page;
+                    for(var i =0;i<page;i++){
+                        if(start+i<this.dataList.length){
+                            arr.push(this.cloneObj(this.dataList[start+i]));
+                        }
                     }
-                }
-                this.$set(this,'pageList',arr);
+                    this.$set(this,'pageList',arr);
+                });
+                
 
                 // console.log('分页信息 ',this.pageList)
             }

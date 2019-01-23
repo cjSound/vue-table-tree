@@ -3,7 +3,7 @@ import tableBody from  './table-body'
 export default {
     components:{tableBody},
     computed:{
-        ...mapGetters(['pageNum','expanded']),
+        ...mapGetters(['pageNum','expanded','childenname']),
     },
     props: {
         slotMap:{
@@ -52,10 +52,25 @@ export default {
             }
         },
     },
+    watch:{
+        item:{
+            handler:function(newVal,oldVal){
+                // console.log('item ',newVal,oldVal)
+                if(newVal[this.childenname].length>this.pageNum){
+                    this.watchChange =false;
+                    this.$nextTick(()=>{
+                        this.watchChange =true;
+                    })
+                }
+            },
+            deep:true
+        }
+    },
     data(){
         return {
             open:true,
-            keyArray:[]
+            keyArray:[],
+            watchChange:true
         }
     },
     render(h) {
@@ -90,7 +105,7 @@ export default {
                     })}
                 </div>
                 {
-                    (  item.children!=null && item.children.length) >0? 
+                    ( this.watchChange && item.children!=null && item.children.length) >0? 
                     <tableBody  class={{'tabody':true,'ishidden':!this.open}} pid={this.rootKey} slotMap ={this.slotMap}  dataList={item.children} 
                         width-array={this.widthArray} childenname={this.childenname}
                         step={this.step } left={this.left+this.step}
