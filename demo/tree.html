@@ -12,7 +12,7 @@
     <body>
         <div id="app">
             <h1 @click="test1">{{ msg }}</h1>
-            <table-tree :data-list="dataList"   :id="'id'" :name="'displayName'" 
+            <table-tree v-if="dataList.length>0" :data-list="dataList"   :id="'id'" :name="'displayName'" 
                 :left='10' :page="5" :widths="widths" :expanded="'isExpanded'"
                 :parent-key="'pid'" :root-key="''" title="值" class="table">
                 <div slot="类型"  slot-scope="{item}">{{item.displayType}}</div>
@@ -128,7 +128,7 @@
             el: '#app',
             data(){
                 return {
-                    dataList:data,
+                    dataList:[],
                     msg:'Welcome to Table Tree',
                     widths:[40,20,20,20]
                 }
@@ -151,6 +151,7 @@
                 }
             },
             mounted(){
+                this.$set(this,'dataList',data)
                 console.log(this.dataList)
             }
         })
