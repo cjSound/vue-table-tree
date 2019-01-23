@@ -3,7 +3,7 @@
         <div v-if="dataList.length<10" >
             <table-item  v-for="(item,index) in dataList" :key="index" :index="index" 
                 :width-array="widthArray" :childenname="childenname" :name="name" :slotMap ="slotMap"
-                :step="step" :left="left"
+                :step="step" :left="left" :keys="keys"
                 :item ="item"  >
             </table-item>
         </div>
@@ -11,7 +11,7 @@
         <div class="table-page" v-else>
             <table-item  v-if="pageList.length>0" v-for="(item,index) in pageList" :key="index" :index="index" 
                 :width-array="widthArray" :childenname="childenname" :name="name" :slotMap ="slotMap"
-                :step="step" :left="left"
+                :step="step" :left="left" :keys="keys"
                 :item ="item"  >
             </table-item>
 
@@ -83,6 +83,12 @@ export default {
             }
         },
         widthArray:{
+            type:Array,
+            default:function(){
+                return  []
+            }
+        },
+        keys:{
             type:Array,
             default:function(){
                 return  []

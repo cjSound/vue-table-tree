@@ -1,14 +1,14 @@
 <template>
 	<div class="hello">
 		<h1 @click="test1">{{ msg }}</h1>
-		<table-tree :data-list="dataList" :expanded="'isExpanded'" :id="'id'" :name="'displayName'" 
+		<table-tree :data-list="dataList"   :name="'displayName'" 
 			:left='10' :page="5"
-			:parent-key="'pid'" :root-key="''" title="值" class="table">
+			:parent-key="'pid'"  title="值" class="table">
 			<div slot="类型"  slot-scope="{item}">{{item.displayType}}</div>
 			<div slot="值" slot-scope="{item}">{{item.value}}</div>
-			<div slot="操作" slot-scope="{item}">
-				<span @click="test(item)">新增</span>
-				<span @click="test(item)">删除</span>
+			<div slot="操作" slot-scope="{item,keys}">
+				<span @click="test(item,keys)">新增</span>
+				<span @click="test(item,keys)">删除</span>
 			</div>
 		</table-tree>
 	</div>
@@ -36,8 +36,8 @@ export default {
 			this.$set(this.dataList[0].children[0].children[0].children[2].children[0].children[0],'children',data2[0].children);
 			
 		},
-		test(item) {
-			alert(item.displayName)
+		test(item,keys) {
+			alert(keys)
 		}
   },
   mounted(){

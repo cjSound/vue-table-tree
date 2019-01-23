@@ -43,19 +43,28 @@ export default {
                 return  []
             }
         },
+        keys:{
+            type:Array,
+            default:function(){
+                return  []
+            }
+        },
     },
     data(){
         return {
             open:true,
-            pageNum:10
+            pageNum:10,
+            keyArray:[]
         }
     },
     render(h) {
+        this.keyArray=this.keys.concat(this.index);
         this.pageNum =this.$store.state.pageNum;
         const key =this.name;
         const item =this.item;
         const slotMap =this.slotMap;
         const widthArray =this.widthArray;
+        const keys =this.keyArray;
         return (
             <div>
                 <div class={{'tab-row':true,'last-child':item.children==null || item.children.length ==0}}>
@@ -65,8 +74,8 @@ export default {
                             item.children==null || item.children.length ==0 ?<span>&nbsp;</span>:
                             <span  class={{
                                 'icon iconfont':true,
-                                'icon-xiajiantou':item.open,
-                                'icon-youjiantou':!item.open
+                                'icon-xiajiantou':this.open,
+                                'icon-youjiantou':!this.open
                             }}>
                             </span>
                         }
@@ -75,7 +84,7 @@ export default {
                     </div>
                     {Object.keys(slotMap).map((i,index)=>{
                         return (
-                            <div class="row-item" style={{'width':widthArray[index+1]+'%'}}>{slotMap[i]({item})}</div>
+                            <div class="row-item" style={{'width':widthArray[index+1]+'%'}}>{slotMap[i]({item,keys})}</div>
                         )
                     })}
                 </div>
@@ -84,11 +93,15 @@ export default {
                     <tableBody  class="tabody" pid={this.rootKey} slotMap ={this.slotMap}  dataList={item.children} 
                         width-array={this.widthArray} childenname={this.childenname}
                         step={this.step } left={this.left+this.step}
+                        keys={this.keyArray}
                         name={this.name}  >
                     </tableBody> : ''
                 }
             </div>
         )
+        
+    },
+    mounted(){
         
     },
     methods:{

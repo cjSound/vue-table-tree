@@ -6,6 +6,7 @@
         </div>
         <table-body  v-if="open" class="tabody" :pid="rootKey" :slotMap ="$scopedSlots"  :dataList="dataList" 
             :width-array="widthArray" :childenname="childenname" :left="left" :step="left"
+            :keys="keys"
             :id="id" :name="name" :parentKey="parentKey">
         </table-body>
     </div>
@@ -77,7 +78,8 @@ export default {
         return {
             widthArray:[],
             titleArray:[],
-            open:false
+            open:false,
+            keys:[]
         }
     },
     methods:{
