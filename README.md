@@ -90,19 +90,8 @@ Add to other Vue components
 
     默认下级的偏移距离    
 
-* **rootKey**
-    
-    * type: `String`
-    * default:`''`
 
-    顶级Pid的值    
 
-* **id**
-    
-    * type: `String`
-    * default:`id`
-
-    字段唯一id，对应的字段名
 
 * **title**
     
