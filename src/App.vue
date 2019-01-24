@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <!-- <HelloWorld msg="Welcome to Table Tree"/> -->
+    <HelloWorld msg="Welcome to Table Tree"/>
 
-    <demo msg="Welcome to Table Tree"/>
+    <!-- <demo msg="Welcome to Table Tree"/> -->
     
   </div>
 </template>

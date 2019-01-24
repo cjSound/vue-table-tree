@@ -3,7 +3,7 @@
 		<h1 @click="test1">{{ msg }}</h1>
 		<table-tree :data-list="dataList"   :name="'displayName'" :expanded="'isExpanded'"
 			:left='10' :page="15"
-			:parent-key="'pid'"  title="值" class="table">
+			   title="值" class="table">
 			<div slot="类型"  slot-scope="{item}">{{item.displayType}}</div>
 			<div slot="值" slot-scope="{item}">{{item.value}}</div>
 			<div slot="操作" slot-scope="{item,keys}">

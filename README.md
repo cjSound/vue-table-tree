@@ -44,17 +44,14 @@ Add to other Vue components
 
 
 ```
-<table-tree class="table"   :data-list="dataList" :title="'keys'"
-    :id="'id'" :name="'displayName'" :parent-key="'pid'" :root-key="''" :expanded="'isExpanded'">
-    <div slot="类型" slot-scope="{item}">
-        {{item.displayType}}
-    </div>
-    <div slot="值" slot-scope="{item}">
-        {{item.value}}
-    </div>
-    <div slot="操作" slot-scope="{item}">
-        <span @click="test(item)">编辑</span>
-        <span @click="test(item)">删除</span>
+<table-tree :data-list="dataList"   :name="'displayName'" :expanded="'isExpanded'"
+    :left='10' :page="15"
+        title="值" class="table">
+    <div slot="类型"  slot-scope="{item}">{{item.displayType}}</div>
+    <div slot="值" slot-scope="{item}">{{item.value}}</div>
+    <div slot="操作" slot-scope="{item,keys}">
+        <span @click="test(item,keys)">新增</span>
+        <span @click="test(item,keys)">删除</span>
     </div>
 </table-tree>
 ```
