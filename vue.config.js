@@ -1,5 +1,5 @@
 module.exports = {
-    baseUrl: './',
+    publicPath: './',
     configureWebpack: {
         output: {
             library: "VueTableTree",
