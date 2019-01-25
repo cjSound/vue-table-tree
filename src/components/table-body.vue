@@ -11,7 +11,7 @@
         <div class="table-page" v-else> 
             <table-item  v-if="pageList.length>0  &&update" v-for="(item,index) in pageList" :key="index" :index="index" 
                 :width-array="widthArray"   :name="name" :slotMap ="slotMap"
-                :step="step" :left="left" :keys="keys"
+                :step="step" :left="left" :keys="keys"  
                 :item ="item"  >
             </table-item>
 
@@ -122,6 +122,9 @@ export default {
                     this.$nextTick(()=>{
                         this.$set(this,'pageList',arr);
                         this.update =true;
+                        this.$nextTick(()=>{
+                            this.$store.commit('setPageChange',this.keys);
+                        })
                     })
                 });
                 // console.log('分页信息 ',this.pageList)

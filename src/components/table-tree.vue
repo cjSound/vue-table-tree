@@ -6,7 +6,7 @@
         </div>
         <table-body  v-if="open" class="tabody" :pid="rootKey" :slotMap ="$scopedSlots"  :dataList="dataList" 
             :width-array="widthArray"   :left="left" :step="left"
-            :keys="keys"
+            :keys="keys"  
             :id="id" :name="name" :parentKey="parentKey">
         </table-body>
     </div>
@@ -14,10 +14,22 @@
 
 <script>
 import store from './store'
+import { mapGetters }   from 'vuex'
 import tableBody from  './table-body'
 export default {
     components:{tableBody},
     store,
+    computed:{
+        ...mapGetters(['pageChange']),
+    },
+    watch:{
+        pageChange:{
+            handler:function(newVal,oldVal){
+                this.$emit('pageChange',newVal.keys);
+            },
+            deep:true
+        }
+    },
     props:{
         //key展示的标题
         title:{

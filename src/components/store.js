@@ -12,7 +12,12 @@ const store = new Vuex.Store({
       name:'',
       widths:'',
       expanded:'',
-      init:true
+      init:true,
+      pageChange:{
+        index:0,
+        keys:[]
+      }
+
     },
     mutations: {
       setPageNum:function(state,info){
@@ -31,10 +36,12 @@ const store = new Vuex.Store({
         state.widths=info;
       },
       setExpanded:function(state,info){
-        console.log("set Expangd")
         state.expanded=info;
       },
-      
+      setPageChange:function(state,info){
+        state.pageChange.index++;
+        state.pageChange.keys=info;
+      },
     },
     actions: {
   
@@ -46,6 +53,7 @@ const store = new Vuex.Store({
         childenname: state=>state.childenname,
         name: state=>state.name,
         expanded:state=>state.expanded,
+        pageChange:state=>state.pageChange,
         
     }
 })

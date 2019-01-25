@@ -1,8 +1,8 @@
 <template>
 	<div class="hello">
-		<h1 @click="test1">{{ msg }}</h1>
+		<h1>{{ msg }}</h1>
 		<table-tree :data-list="dataList"   :name="'displayName'" :expanded="'isExpanded'"
-			:left='10' :page="15"
+			:left='10' :page="15" @pageChange="pageChange"
 			   title="值" class="table">
 			<div slot="类型"  slot-scope="{item}">{{item.displayType}}</div>
 			<div slot="值" slot-scope="{item}">{{item.value}}</div>
@@ -32,21 +32,8 @@ export default {
 		}
 	},
 	methods: {
-		test1(){
-			var list =[{ "bitWidth": -1, "childrenNum": 0, "displayName": "U_read", "displayType": "int ", "id": "1.0.0.2.0.0.0", "isActiveUnionMember": false, "isDataNode": true, "isEnumConstant": true, "isEnumNode": false, "isExpanded": false, "isPointer": false, "isPointerChildren": false, "isUnionMember": false, "pid": "1.0.0.2.0.0", "realName": "U_read", "realType": "int", "value": "17", "valueEditable": true },
-                        { "bitWidth": -1, "childrenNum": 0, "displayName": "U_write", "displayType": "int ", "id": "1.0.0.2.0.0.1", "isActiveUnionMember": false, "isDataNode": true, "isEnumConstant": true, "isEnumNode": false, "isExpanded": false, "isPointer": false, "isPointerChildren": false, "isUnionMember": false, "pid": "1.0.0.2.0.0", "realName": "U_write", "realType": "int", "value": "34", "valueEditable": true },
-                        { "bitWidth": -1, "childrenNum": 0, "displayName": "U_verify", "displayType": "int ", "id": "1.0.0.2.0.0.2", "isActiveUnionMember": false, "isDataNode": true, "isEnumConstant": true, "isEnumNode": false, "isExpanded": false, "isPointer": false, "isPointerChildren": false, "isUnionMember": false, "pid": "1.0.0.2.0.0", "realName": "U_verify", "realType": "int", "value": "51", "valueEditable": true },
-                        { "bitWidth": -1, "childrenNum": 0, "displayName": "U_read", "displayType": "int ", "id": "1.0.0.2.0.0.0", "isActiveUnionMember": false, "isDataNode": true, "isEnumConstant": true, "isEnumNode": false, "isExpanded": false, "isPointer": false, "isPointerChildren": false, "isUnionMember": false, "pid": "1.0.0.2.0.0", "realName": "U_read", "realType": "int", "value": "17", "valueEditable": true },
-                        { "bitWidth": -1, "childrenNum": 0, "displayName": "U_write", "displayType": "int ", "id": "1.0.0.2.0.0.1", "isActiveUnionMember": false, "isDataNode": true, "isEnumConstant": true, "isEnumNode": false, "isExpanded": false, "isPointer": false, "isPointerChildren": false, "isUnionMember": false, "pid": "1.0.0.2.0.0", "realName": "U_write", "realType": "int", "value": "34", "valueEditable": true },
-                        { "bitWidth": -1, "childrenNum": 0, "displayName": "U_verify", "displayType": "int ", "id": "1.0.0.2.0.0.2", "isActiveUnionMember": false, "isDataNode": true, "isEnumConstant": true, "isEnumNode": false, "isExpanded": false, "isPointer": false, "isPointerChildren": false, "isUnionMember": false, "pid": "1.0.0.2.0.0", "realName": "U_verify", "realType": "int", "value": "51", "valueEditable": true },
-                        { "bitWidth": -1, "childrenNum": 0, "displayName": "U_read", "displayType": "int ", "id": "1.0.0.2.0.0.0", "isActiveUnionMember": false, "isDataNode": true, "isEnumConstant": true, "isEnumNode": false, "isExpanded": false, "isPointer": false, "isPointerChildren": false, "isUnionMember": false, "pid": "1.0.0.2.0.0", "realName": "U_read", "realType": "int", "value": "17", "valueEditable": true },
-                        { "bitWidth": -1, "childrenNum": 0, "displayName": "U_write", "displayType": "int ", "id": "1.0.0.2.0.0.1", "isActiveUnionMember": false, "isDataNode": true, "isEnumConstant": true, "isEnumNode": false, "isExpanded": false, "isPointer": false, "isPointerChildren": false, "isUnionMember": false, "pid": "1.0.0.2.0.0", "realName": "U_write", "realType": "int", "value": "34", "valueEditable": true },
-                        { "bitWidth": -1, "childrenNum": 0, "displayName": "U_verify", "displayType": "int ", "id": "1.0.0.2.0.0.2", "isActiveUnionMember": false, "isDataNode": true, "isEnumConstant": true, "isEnumNode": false, "isExpanded": false, "isPointer": false, "isPointerChildren": false, "isUnionMember": false, "pid": "1.0.0.2.0.0", "realName": "U_verify", "realType": "int", "value": "51", "valueEditable": true },
-                        { "bitWidth": -1, "childrenNum": 0, "displayName": "U_read", "displayType": "int ", "id": "1.0.0.2.0.0.0", "isActiveUnionMember": false, "isDataNode": true, "isEnumConstant": true, "isEnumNode": false, "isExpanded": false, "isPointer": false, "isPointerChildren": false, "isUnionMember": false, "pid": "1.0.0.2.0.0", "realName": "U_read", "realType": "int", "value": "17", "valueEditable": true },
-                        { "bitWidth": -1, "childrenNum": 0, "displayName": "U_read", "displayType": "int ", "id": "1.0.0.2.0.0.0", "isActiveUnionMember": false, "isDataNode": true, "isEnumConstant": true, "isEnumNode": false, "isExpanded": false, "isPointer": false, "isPointerChildren": false, "isUnionMember": false, "pid": "1.0.0.2.0.0", "realName": "U_read", "realType": "int", "value": "17", "valueEditable": true },
-					]
-					// this.dataList[0].children[0].children[0].children[2].children[0].children[0].children =list;
-                    this.$set(this.dataList[0].children[0].children[0].children[2].children[0].children[0],'children',list);
+		pageChange(keys){
+			console.log('分页改变了',keys)
 		},
 		test(item,keys) {
 			alert(keys)

@@ -102,7 +102,8 @@ export default {
                 </div>
                 {
                     ( this.watchChange && item.children!=null && item.children.length) >0? 
-                    <tableBody  class={{'tabody':true,'ishidden':!this.open}} pid={this.rootKey} slotMap ={this.slotMap}  dataList={item.children} 
+                    <tableBody  class={{'tabody':true,'ishidden':!this.open}} pid={this.rootKey} slotMap ={this.slotMap}  
+                        dataList={item.children}   
                         width-array={this.widthArray} childenname={this.childenname}
                         step={this.step } left={this.left+this.step}
                         keys={this.keyArray}

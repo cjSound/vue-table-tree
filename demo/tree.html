@@ -15,7 +15,7 @@
     <body>
         <div id="app">
             <h1 @click="test1">{{ msg }}</h1>
-            <table-tree :data-list="dataList"   :name="'displayName'" :expanded="'isExpanded'"
+            <table-tree  v-show="tableShow" :data-list="dataList"   :name="'displayName'" :expanded="'isExpanded'"
 			:left='10' :page="5"
 			  title="值" class="table">
 			<div slot="类型"  slot-scope="{item}">{{item.displayType}}</div>
@@ -133,6 +133,7 @@
             data(){
                 return {
                     dataList:[],
+                    tableShow:false,
                     msg:'Welcome to Table Tree',
                     widths:[40,20,20,20]
                 }
@@ -158,8 +159,10 @@
                 }
             },
             mounted(){
-                this.$set(this,'dataList',data)
-                console.log(this.dataList)
+                setTimeout(()=>{
+                    this.$set(this,'dataList',data);
+                    this.tableShow =true;
+                },2000)
             }
         })
     </script>
