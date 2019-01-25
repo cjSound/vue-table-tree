@@ -25,7 +25,7 @@ export default {
     watch:{
         pageChange:{
             handler:function(newVal,oldVal){
-                this.$emit('pageChange',newVal.keys);
+                this.$emit('pagechange',newVal.keys);
             },
             deep:true
         }

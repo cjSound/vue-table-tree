@@ -2,7 +2,7 @@
 	<div class="hello">
 		<h1>{{ msg }}</h1>
 		<table-tree :data-list="dataList"   :name="'displayName'" :expanded="'isExpanded'"
-			:left='10' :page="15" @pageChange="pageChange"
+			:left='10' :page="15" @pagechange="pageChange"
 			   title="值" class="table">
 			<div slot="类型"  slot-scope="{item}">{{item.displayType}}</div>
 			<div slot="值" slot-scope="{item}">{{item.value}}</div>

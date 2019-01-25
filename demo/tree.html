@@ -16,7 +16,7 @@
         <div id="app">
             <h1 @click="test1">{{ msg }}</h1>
             <table-tree  v-show="tableShow" :data-list="dataList"   :name="'displayName'" :expanded="'isExpanded'"
-			:left='10' :page="5" @pageChange="pageChange"
+			:left='10' :page="5" @pagechange="pagechange"
 			  title="值" class="table">
 			<div slot="类型"  slot-scope="{item}">{{item.displayType}}</div>
 			<div slot="值" slot-scope="{item}">{{item.value}}</div>
@@ -29,7 +29,7 @@
     </body>
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
 
-    <script src="./../dist/vue-lazy-table-tree.umd.min.js"></script>
+    <script src="./../dist/vue-lazy-table-tree.umd.js"></script>
     
     <script>
  
@@ -157,15 +157,13 @@
                 test(item,keys) {
                     alert(keys)
                 },
-                pageChange(keys){
+                pagechange(keys){
                     alert('啦啦啦。分页了')
                 }
             },
             mounted(){
-                setTimeout(()=>{
-                    this.$set(this,'dataList',data);
-                    this.tableShow =true;
-                },2000)
+                this.$set(this,'dataList',data);
+                this.tableShow =true;
             }
         })
     </script>
