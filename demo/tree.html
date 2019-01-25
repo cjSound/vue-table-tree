@@ -16,7 +16,7 @@
         <div id="app">
             <h1 @click="test1">{{ msg }}</h1>
             <table-tree  v-show="tableShow" :data-list="dataList"   :name="'displayName'" :expanded="'isExpanded'"
-			:left='10' :page="5"
+			:left='10' :page="5" @pageChange="pageChange"
 			  title="值" class="table">
 			<div slot="类型"  slot-scope="{item}">{{item.displayType}}</div>
 			<div slot="值" slot-scope="{item}">{{item.value}}</div>
@@ -156,6 +156,9 @@
                 },
                 test(item,keys) {
                     alert(keys)
+                },
+                pageChange(keys){
+                    alert('啦啦啦。分页了')
                 }
             },
             mounted(){
