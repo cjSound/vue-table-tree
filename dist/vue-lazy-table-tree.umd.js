@@ -13320,7 +13320,7 @@ var lib_pagination_default = /*#__PURE__*/__webpack_require__.n(lib_pagination);
       this.open = this.item[this.expanded] ? true : false;
     }
 
-    this.oldChildLength = this.item[this.childenname].length;
+    this.oldChildLength = this.item[this.childenname] == null ? 0 : this.item[this.childenname].length;
   },
   methods: {
     showTog: function showTog() {
