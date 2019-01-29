@@ -13225,7 +13225,7 @@ var lib_pagination_default = /*#__PURE__*/__webpack_require__.n(lib_pagination);
         var _this = this;
 
         // console.log('item ',newVal,oldVal,this.childenname,newVal[this.childenname])
-        if (newVal[this.childenname] != null && (this.oldChildLength > this.pageNum || newVal[this.childenname].length > this.pageNum)) {
+        if (newVal[this.childenname] != null && this.oldChildLength != newVal[this.childenname].length) {
           this.watchChange = false;
           this.$nextTick(function () {
             _this.watchChange = true;
@@ -13251,7 +13251,8 @@ var lib_pagination_default = /*#__PURE__*/__webpack_require__.n(lib_pagination);
     var item = this.item;
     var slotMap = this.slotMap;
     var widthArray = this.widthArray;
-    var keys = this.keyArray; // console.log(2,this.open,this.item.id,this.item.displayName)
+    var keys = this.keyArray; // console.log(keys,item.displayName,this.item)
+    // console.log(2,this.open,this.item.id,this.item.displayName)
 
     return h("div", [h("div", {
       "class": {
@@ -13311,7 +13312,11 @@ var lib_pagination_default = /*#__PURE__*/__webpack_require__.n(lib_pagination);
       this.open = this.item[this.expanded] ? true : false;
     }
 
-    this.oldChildLength = this.item[this.childenname] == null ? 0 : this.item[this.childenname].length;
+    if (this.item[this.childenname] == null) {
+      this.$set(this.item, this.childenname, []);
+    }
+
+    this.oldChildLength = this.item[this.childenname].length;
   },
   methods: {
     showTog: function showTog() {

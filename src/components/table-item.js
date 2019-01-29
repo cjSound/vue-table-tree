@@ -53,7 +53,7 @@ export default {
             handler:function(newVal,oldVal){
                 // console.log('item ',newVal,oldVal,this.childenname,newVal[this.childenname])
                 if(newVal[this.childenname]!=null &&
-                    (this.oldChildLength>this.pageNum || newVal[this.childenname].length>this.pageNum)){
+                    (this.oldChildLength !=newVal[this.childenname].length)){
                     this.watchChange =false;
                     this.$nextTick(()=>{
                         this.watchChange =true;
@@ -78,6 +78,7 @@ export default {
         const slotMap =this.slotMap;
         const widthArray =this.widthArray;
         const keys =this.keyArray;
+        // console.log(keys,item.displayName,this.item)
         // console.log(2,this.open,this.item.id,this.item.displayName)
         return (
             <div>
@@ -120,7 +121,10 @@ export default {
         if(this.expanded!=''){
             this.open= this.item[this.expanded]?true:false;
         }
-        this.oldChildLength=this.item[this.childenname]==null?0:this.item[this.childenname].length;
+        if(this.item[this.childenname]==null){
+            this.$set(this.item,this.childenname,[]);
+        }
+        this.oldChildLength=this.item[this.childenname].length;
     },
     methods:{
         showTog(){

@@ -36,7 +36,9 @@ export default {
 			console.log('分页改变了',keys)
 		},
 		test(item,keys) {
-			this.$set(this.dataList[0].children[0].children[0].children[2].children[0].children[0],'children',data2);
+			// this.$set(this.dataList[0].children[0].children[0].children[2].children[0].children[0],'children',data2);
+			this.$set(this.dataList[0].children[0].children[0].children[0],'children',data2);
+			console.log(this.dataList)
 		}
   },
   mounted(){
