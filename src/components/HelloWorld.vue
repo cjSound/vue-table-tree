@@ -1,8 +1,8 @@
 <template>
 	<div class="hello">
-		<h1>{{ msg }}</h1>
+		<h1 @click="test">{{ msg }}</h1>
 		<table-tree :data-list="dataList"   :name="'displayName'" :expanded="'isExpanded'"
-			:left='10' :page="15" @pagechange="pageChange"
+			:left='10' :page="5" @pagechange="pageChange"
 			   title="值" class="table">
 			<div slot="类型"  slot-scope="{item}">{{item.displayType}}</div>
 			<div slot="值" slot-scope="{item}">{{item.value}}</div>
@@ -26,7 +26,7 @@ export default {
 	},
 	data() {
 		return {
-      		dataList: bigdata,
+      		dataList: data,
 			// bigdata :data2,
 			widths:[40,20,20,20]
 		}
@@ -36,7 +36,7 @@ export default {
 			console.log('分页改变了',keys)
 		},
 		test(item,keys) {
-			alert(keys)
+			this.$set(this.dataList[0].children[0].children[0].children[2].children[0].children[0],'children',data2);
 		}
   },
   mounted(){

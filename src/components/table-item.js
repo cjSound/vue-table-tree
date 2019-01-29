@@ -52,7 +52,8 @@ export default {
         item:{
             handler:function(newVal,oldVal){
                 // console.log('item ',newVal,oldVal,this.childenname,newVal[this.childenname])
-                if(newVal[this.childenname]!=null && newVal[this.childenname].length>this.pageNum){
+                if(newVal[this.childenname]!=null &&
+                    (this.oldChildLength>this.pageNum || newVal[this.childenname].length>this.pageNum)){
                     this.watchChange =false;
                     this.$nextTick(()=>{
                         this.watchChange =true;
@@ -66,7 +67,8 @@ export default {
         return {
             open:true,
             keyArray:[],
-            watchChange:true
+            watchChange:true,
+            oldChildLength:''
         }
     },
     render(h) {
@@ -118,6 +120,7 @@ export default {
         if(this.expanded!=''){
             this.open= this.item[this.expanded]?true:false;
         }
+        this.oldChildLength=this.item[this.childenname].length;
     },
     methods:{
         showTog(){

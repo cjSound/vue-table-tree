@@ -13234,7 +13234,7 @@ var lib_pagination_default = /*#__PURE__*/__webpack_require__.n(lib_pagination);
         var _this = this;
 
         // console.log('item ',newVal,oldVal,this.childenname,newVal[this.childenname])
-        if (newVal[this.childenname] != null && newVal[this.childenname].length > this.pageNum) {
+        if (newVal[this.childenname] != null && (this.oldChildLength > this.pageNum || newVal[this.childenname].length > this.pageNum)) {
           this.watchChange = false;
           this.$nextTick(function () {
             _this.watchChange = true;
@@ -13248,7 +13248,8 @@ var lib_pagination_default = /*#__PURE__*/__webpack_require__.n(lib_pagination);
     return {
       open: true,
       keyArray: [],
-      watchChange: true
+      watchChange: true,
+      oldChildLength: ''
     };
   },
   render: function render(h) {
@@ -13318,6 +13319,8 @@ var lib_pagination_default = /*#__PURE__*/__webpack_require__.n(lib_pagination);
     if (this.expanded != '') {
       this.open = this.item[this.expanded] ? true : false;
     }
+
+    this.oldChildLength = this.item[this.childenname].length;
   },
   methods: {
     showTog: function showTog() {
