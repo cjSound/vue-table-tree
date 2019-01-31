@@ -3,7 +3,7 @@ import tableBody from  './table-body'
 export default {
     components:{tableBody},
     computed:{
-        ...mapGetters(['pageNum','expanded','childenname']),
+        ...mapGetters(['pageNum','expanded','childenname','name']),
     },
     props: {
         slotMap:{
@@ -51,7 +51,7 @@ export default {
     watch:{
         item:{
             handler:function(newVal,oldVal){
-                // console.log('item ',newVal,oldVal,this.childenname,newVal[this.childenname])
+                // console.log('item ',newVal[this.name],newVal,this.oldChildLength,newVal[this.childenname])
                 if(newVal[this.childenname]!=null &&
                     (this.oldChildLength !=newVal[this.childenname].length)){
                     this.watchChange =false;

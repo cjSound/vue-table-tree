@@ -82,7 +82,9 @@ export const data = [
                             },
 
                         ]
+                        
                     },
+                    { "bitWidth": -1, "childrenNum": 0, "displayName": "c1", "displayType": "int ", "id": "1.0.1.0.0.0", "isActiveUnionMember": false, "isDataNode": true, "isEnumConstant": true, "isEnumNode": false, "isExpanded": false, "isPointer": false, "isPointerChildren": false, "isUnionMember": false, "pid": "1.0.1.0.0", "realName": "U_read", "realType": "int", "value": "17", "valueEditable": true },
 
                 ]
             }]
