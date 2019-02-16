@@ -79,6 +79,10 @@ export default {
                 return [];
             }
         },
+        closed:{
+            type:String,
+            default:''
+        },
         dataList:{
             type:Array,
             default:function(){
@@ -102,6 +106,8 @@ export default {
             this.$store.commit('setChildenname',this.childenname);
             this.$store.commit('setWidths',this.widths);
             this.$store.commit('setExpanded',this.expanded);
+            this.$store.commit('setClosed',this.closed);
+            
             
             this.open=true;
         }

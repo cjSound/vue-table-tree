@@ -9,7 +9,7 @@
         </div>
         
         <div class="table-page" v-else> 
-            <table-item  v-if="pageList.length>0  &&update" v-for="(item,index) in pageList" :key="index" :index="index" 
+            <table-item  v-if="pageList.length>0  &&update" v-for="(item,index) in pageList" :key="index" :index="item.tableIndex" 
                 :width-array="widthArray"   :name="name" :slotMap ="slotMap"
                 :step="step" :left="left" :keys="keys"  
                 :item ="item"  >
@@ -115,7 +115,9 @@ export default {
                     var start =(index-1) * page;
                     for(var i =0;i<page;i++){
                         if((start+i)<this.dataList.length){
-                            arr.push(this.cloneObj(this.dataList[start+i]));
+                            var  itmes =this.cloneObj(this.dataList[start+i]);
+                            itmes.tableIndex =i+start;
+                            arr.push(itmes);
                         }
                     }
                     this.update =false;

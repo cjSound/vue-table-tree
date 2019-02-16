@@ -61,11 +61,22 @@ export default {
                 }
             },
             deep:true
-        }
+        },
+        plugItem:{
+            handler:function(newVal){
+                if(newVal.closed){
+                    this.open =false;
+                }
+            },
+            deep:true
+        },
     },
     data(){
         return {
             open:true,
+            plugItem:{
+                closed:false
+            },
             keyArray:[],
             watchChange:true,
             oldChildLength:''
@@ -78,6 +89,9 @@ export default {
         const slotMap =this.slotMap;
         const widthArray =this.widthArray;
         const keys =this.keyArray;
+        const closed=this.plugItem;
+        
+        this.oldChildLength= item.children==null?0:item.children.length;
         // console.log(keys,item.displayName,this.item)
         // console.log(2,this.open,this.item.id,this.item.displayName)
         return (
@@ -95,11 +109,11 @@ export default {
                             </span>
                         }
                         
-                        {item[key]}{item.showItem}
+                        {item[key]}{item.showItem}{this.open}
                     </div>
                     {Object.keys(slotMap).map((i,index)=>{
                         return (
-                            <div class="row-item" style={{'width':widthArray[index+1]+'%'}}>{slotMap[i]({item,keys})}</div>
+                            <div class="row-item" style={{'width':widthArray[index+1]+'%'}}>{slotMap[i]({item,keys,closed})}</div>
                         )
                     })}
                 </div>
@@ -128,7 +142,9 @@ export default {
     },
     methods:{
         showTog(){
-            this.open=!this.open;
+            if(!this.plugItem.closed){
+                this.open=!this.open;
+            }
         }
     }
 }

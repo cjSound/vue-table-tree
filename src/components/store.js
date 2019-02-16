@@ -13,6 +13,7 @@ const store = new Vuex.Store({
       widths:'',
       expanded:'',
       init:true,
+      closed:'',
       pageChange:{
         index:0,
         keys:[]
@@ -42,6 +43,9 @@ const store = new Vuex.Store({
         state.pageChange.index++;
         state.pageChange.keys=info;
       },
+      setClosed:function(state,info){
+        state.closed=info;
+      },
     },
     actions: {
   
@@ -54,6 +58,8 @@ const store = new Vuex.Store({
         name: state=>state.name,
         expanded:state=>state.expanded,
         pageChange:state=>state.pageChange,
+        closed:state=>state.closed
+        
         
     }
 })
