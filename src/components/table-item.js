@@ -30,11 +30,7 @@ export default {
             default: function () {
                 return []
             }
-        },
-        name:{
-            type:String,
-            default:'name'
-        },
+        }, 
         widthArray:{
             type:Array,
             default:function(){
@@ -123,8 +119,7 @@ export default {
                         dataList={item.children}   
                         width-array={this.widthArray} childenname={this.childenname}
                         step={this.step } left={this.left+this.step}
-                        keys={this.keyArray}
-                        name={this.name}  >
+                        keys={this.keyArray} >
                     </tableBody> : ''
                 }
             </div>

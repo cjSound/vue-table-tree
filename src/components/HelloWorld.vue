@@ -37,7 +37,7 @@ export default {
 			console.log('分页改变了',keys)
 		},
 		test(item,keys,closed) {
-			// this.$set(this.dataList[0].children[0].children[0].children[2].children[0].children[0],'children',data2);
+			this.$set(this.dataList[0].children[0].children[0].children[2].children[0].children[0].children[1],'children',data2);
 			// this.$set(this.dataList[0].children[0].children[0].children[0],'children',data2);
 			// var item =this.dataList[0].children[0].children[1];
 			// this.$set(this.dataList[0].children[0].children[1].children[0].children[0],'children',[data3]);

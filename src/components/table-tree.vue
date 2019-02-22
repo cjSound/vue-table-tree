@@ -7,7 +7,7 @@
         <table-body  v-if="open" class="tabody" :pid="rootKey" :slotMap ="$scopedSlots"  :dataList="dataList" 
             :width-array="widthArray"   :left="left" :step="left"
             :keys="keys"  
-            :id="id" :name="name" :parentKey="parentKey">
+            :id="id"  :parentKey="parentKey">
         </table-body>
     </div>
 </template>

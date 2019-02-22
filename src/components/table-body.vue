@@ -2,7 +2,7 @@
     <div  v-if="pageNum>0">
         <div v-if="dataList.length<=pageNum" >
             <table-item  v-for="(item,index) in dataList" :key="index" :index="index" 
-                :width-array="widthArray"   :name="name" :slotMap ="slotMap"
+                :width-array="widthArray"     :slotMap ="slotMap"
                 :step="step" :left="left" :keys="keys"
                 :item ="item"  >
             </table-item>
@@ -10,7 +10,7 @@
         
         <div class="table-page" v-else> 
             <table-item  v-if="pageList.length>0  &&update" v-for="(item,index) in pageList" :key="index" :index="item.tableIndex" 
-                :width-array="widthArray"   :name="name" :slotMap ="slotMap"
+                :width-array="widthArray"    :slotMap ="slotMap"
                 :step="step" :left="left" :keys="keys"  
                 :item ="item"  >
             </table-item>
@@ -65,12 +65,7 @@ export default {
         rootKey:{
             type:String,
             default:''
-        },
-        //展示的名称
-        name:{
-            type:String,
-            default:'name'
-        },
+        }, 
         //父节点字段名称
         parentKey:{
             type:String,
@@ -115,7 +110,7 @@ export default {
                     var start =(index-1) * page;
                     for(var i =0;i<page;i++){
                         if((start+i)<this.dataList.length){
-                            var  itmes =this.cloneObj(this.dataList[start+i]);
+                            var  itmes =this.dataList[start+i];
                             itmes.tableIndex =i+start;
                             arr.push(itmes);
                         }
