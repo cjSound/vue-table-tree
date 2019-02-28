@@ -9,7 +9,7 @@
         </div>
         
         <div class="table-page" v-else> 
-            <table-item  v-if="pageList.length>0  &&update" v-for="(item,index) in pageList" :key="index" :index="item.tableIndex" 
+            <table-item  v-if="pageList.length>0 " v-for="(item,index) in pageList" :key="item.tableIndex" :index="item.tableIndex" 
                 :width-array="widthArray"    :slotMap ="slotMap"
                 :step="step" :left="left" :keys="keys"  
                 :item ="item"  >
@@ -54,9 +54,6 @@ export default {
         step:{
             required:true
         },
-        pid:{
-            required: true
-        },
         id:{
             type:String,
             default:'id'
@@ -96,12 +93,14 @@ export default {
             pageIndex:1,
             childList:[],
             pageList:[],
-            update:true
+            update:true,
+            start:''
         }
     },
     methods:{
         init(num){
             var page =this.pageNum;
+            this.start =new Date().getTime();
             if(this.dataList.length>page){
                 this.$nextTick(()=>{
                     var index =num==null?this.pageIndex:num;
@@ -115,13 +114,11 @@ export default {
                             arr.push(itmes);
                         }
                     }
-                    this.update =false;
+                    this.$set(this,'pageList',arr);
+                    console.log('二阶段耗时',new Date().getTime()-this.start,this.pageList);
                     this.$nextTick(()=>{
-                        this.$set(this,'pageList',arr);
-                        this.update =true;
-                        this.$nextTick(()=>{
-                            this.$store.commit('setPageChange',this.keys);
-                        })
+                        this.$store.commit('setPageChange',this.keys);
+                        console.log('三阶段耗时',new Date().getTime(),new Date().getTime()-this.start);
                     })
                 });
                 // console.log('分页信息 ',this.pageList)

@@ -84,12 +84,13 @@ export default {
         const item =this.item;
         const slotMap =this.slotMap;
         const widthArray =this.widthArray;
-        const keys =this.keyArray;
+        const keys =this.keys.concat(this.index);
         const closed=this.plugItem;
         
         this.oldChildLength= item.children==null?0:item.children.length;
         // console.log(keys,item.displayName,this.item)
         // console.log(2,this.open,this.item.id,this.item.displayName)
+        console.log('段耗时', item[this.name],keys,new Date().getTime());
         return (
             <div>
                 <div class={{'tab-row':true,'last-child':item.children==null || item.children.length ==0}}>
@@ -114,12 +115,12 @@ export default {
                     })}
                 </div>
                 {
-                    ( this.watchChange && item.children!=null && item.children.length) >0? 
-                    <tableBody  class={{'tabody':true,'ishidden':!this.open}} pid={this.rootKey} slotMap ={this.slotMap}  
-                        dataList={item.children}   
-                        width-array={this.widthArray} childenname={this.childenname}
+                    ( this.watchChange &&this.open && item.children!=null && item.children.length) >0? 
+                    <tableBody  class={{'tabody':true,'ishidden':!this.open}}   slotMap ={this.slotMap}  
+                        dataList={item.children}
+                        width-array={this.widthArray}
                         step={this.step } left={this.left+this.step}
-                        keys={this.keyArray} >
+                        keys={keys} >
                     </tableBody> : ''
                 }
             </div>

@@ -1,9 +1,9 @@
 <template>
 	<div class="hello">
 		<h1 @click="test">{{ msg }}</h1>
-		<table-tree :data-list="dataList"   :name="'displayName'" :expanded="'isExpanded'"
+		<table-tree v-if="bigdata.length>0" :data-list="bigdata"   :name="'displayName'" :expanded="'isExpanded'"
 			:closed="'closed'"
-			:left='10' :page="5" @pagechange="pageChange"
+			:left='10' :page="10" @pagechange="pageChange"
 			   title="值" class="table">
 			<div slot="类型"  slot-scope="{item}">{{item.displayType}}</div>
 			<div slot="值" slot-scope="{item}">{{item.value}}</div>
@@ -27,14 +27,31 @@ export default {
 	},
 	data() {
 		return {
-      		dataList: data,
-			// bigdata :data2,
+      		// dataList: data,
+			bigdata :[],
 			widths:[40,20,20,20]
 		}
 	},
 	methods: {
 		pageChange(keys){
 			console.log('分页改变了',keys)
+		},
+		transData(a, idStr, pidStr, chindrenStr){
+			var r = [], hash = {}, id = idStr, pid = pidStr, children = chindrenStr, i = 0, j = 0, len = (a==undefined ? 0 :a.length);
+			for(; i < len; i++){
+				a[i].children = [];
+				hash[a[i][id]] = a[i];
+			}
+			for(; j < len; j++){
+				var aVal = a[j], hashVP = hash[aVal[pid]];
+				if(hashVP&&aVal){
+					!hashVP[children] && (hashVP[children] = []);
+					hashVP[children].push(aVal);
+				}else{
+					r.push(aVal);
+				}
+			}
+			return r;
 		},
 		test(item,keys,closed) {
 			this.$set(this.dataList[0].children[0].children[0].children[2].children[0].children[0].children[1],'children',data2);
@@ -53,6 +70,9 @@ export default {
 		}
   },
   mounted(){
+	  console.log(bigdata)
+	  this.bigdata =bigdata
+	  console.log(this.bigdata)
     // var start =new Date().getTime();
     // var j=0;
     // var end ;
