@@ -13930,12 +13930,12 @@ var store = new vuex_esm.Store({
   }
 });
 /* harmony default export */ var components_store = (store);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"c5a698de-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/table-body.vue?vue&type=template&id=da8635ea&
-var table_bodyvue_type_template_id_da8635ea_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.pageNum>0)?_c('div',[(_vm.dataList.length<=_vm.pageNum)?_c('div',[_vm._l((_vm.dataList),function(item,index){return _c('table-item',{key:index,attrs:{"index":index,"width-array":_vm.widthArray,"slotMap":_vm.slotMap,"step":_vm.step,"left":_vm.left,"keys":_vm.keys,"item":item}})}),(_vm.pageTotal>_vm.pageNum)?_c('el-pagination',{attrs:{"current-page":_vm.pageIndex,"page-size":_vm.pageNum,"layout":"total,prev, pager, next","total":_vm.pageTotal},on:{"update:currentPage":function($event){_vm.pageIndex=$event},"current-change":_vm.minPageChange}}):_vm._e()],2):_c('div',{staticClass:"table-page"},[_vm._l((_vm.pageList),function(item,index){return (_vm.pageList.length>0 )?_c('table-item',{key:item.tableIndex,attrs:{"index":item.tableIndex,"width-array":_vm.widthArray,"slotMap":_vm.slotMap,"step":_vm.step,"left":_vm.left,"keys":_vm.keys,"item":item}}):_vm._e()}),_c('el-pagination',{attrs:{"current-page":_vm.pageIndex,"page-size":_vm.pageNum,"layout":"total,prev, pager, next","total":_vm.dataList.length},on:{"update:currentPage":function($event){_vm.pageIndex=$event},"current-change":_vm.init}})],2)]):_vm._e()}
-var table_bodyvue_type_template_id_da8635ea_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"c5a698de-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/table-body.vue?vue&type=template&id=de88f682&
+var table_bodyvue_type_template_id_de88f682_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.pageNum>0)?_c('div',[(_vm.dataList.length<=_vm.pageNum)?_c('div',[_vm._l((_vm.dataList),function(item,index){return _c('table-item',{key:index,attrs:{"index":index,"width-array":_vm.widthArray,"slotMap":_vm.slotMap,"step":_vm.step,"left":_vm.left,"keys":_vm.keys,"item":item}})}),(_vm.pageTotal>_vm.pageNum)?_c('el-pagination',{attrs:{"current-page":_vm.pageIndex,"page-size":_vm.pageNum,"layout":"total,prev, pager, next","total":_vm.pageTotal},on:{"update:currentPage":function($event){_vm.pageIndex=$event},"current-change":_vm.minPageChange}}):_vm._e()],2):_c('div',{staticClass:"table-page"},[_vm._l((_vm.pageList),function(item,index){return (_vm.pageList.length>0 )?_c('table-item',{key:item.tableIndex,attrs:{"index":item.tableIndex,"width-array":_vm.widthArray,"slotMap":_vm.slotMap,"step":_vm.step,"left":_vm.left,"keys":_vm.keys,"item":item}}):_vm._e()}),_c('el-pagination',{attrs:{"current-page":_vm.pageIndex,"page-size":_vm.pageNum,"layout":"total,prev, pager, next","total":_vm.dataList.length},on:{"update:currentPage":function($event){_vm.pageIndex=$event},"current-change":_vm.init}})],2)]):_vm._e()}
+var table_bodyvue_type_template_id_de88f682_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/table-body.vue?vue&type=template&id=da8635ea&
+// CONCATENATED MODULE: ./src/components/table-body.vue?vue&type=template&id=de88f682&
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/symbol/iterator.js
 var iterator = __webpack_require__("5d58");
@@ -13975,6 +13975,7 @@ var lib_pagination = __webpack_require__("101e");
 var lib_pagination_default = /*#__PURE__*/__webpack_require__.n(lib_pagination);
 
 // CONCATENATED MODULE: ./src/components/table-item.js
+
 
 
 
@@ -14073,8 +14074,8 @@ var lib_pagination_default = /*#__PURE__*/__webpack_require__.n(lib_pagination);
     var closed = this.plugItem;
     this.oldChildLength = item.children == null ? 0 : item.children.length; // console.log(keys,item.displayName,this.item)
     // console.log(2,this.open,this.item.id,this.item.displayName)
-
-    console.log('段耗时', item[this.name], keys, this.open, new Date().getTime()); // return(
+    // console.log('段耗时', item[this.name],keys,this.open,new Date().getTime());
+    // return(
     //     <div>fdsfdsfsdf</div>
     // )
 
@@ -14131,10 +14132,9 @@ var lib_pagination_default = /*#__PURE__*/__webpack_require__.n(lib_pagination);
     }) : '']);
   },
   created: function created() {
-    if (this.expanded != '') {// this.open= this.item[this.expanded]?true:false;
+    if (this.expanded != '') {
+      this.open = this.item[this.expanded] ? true : false;
     }
-
-    console.log('created', this.open);
 
     if (this.item[this.childenname] == null) {
       this.$set(this.item, this.childenname, []);
@@ -14151,6 +14151,7 @@ var lib_pagination_default = /*#__PURE__*/__webpack_require__.n(lib_pagination);
   }
 });
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/table-body.vue?vue&type=script&lang=js&
+
 
 
 
@@ -14265,7 +14266,7 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(lib_pagination_defaul
   },
   methods: {
     minPageChange: function minPageChange() {
-      console.log('setPageChange', this.keys, this.pageIndex);
+      // console.log('setPageChange',this.keys,this.pageIndex)
       this.$store.commit('setPageChange', {
         keys: this.keys,
         pageIndex: this.pageIndex
@@ -14276,10 +14277,8 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(lib_pagination_defaul
 
       var page = this.pageNum;
       this.start = new Date().getTime();
-      console.log('start', this.start);
 
       if (this.dataList.length > page) {
-        console.log('要分页的');
         this.$nextTick(function () {
           var index = num == null ? _this.pageIndex : num;
           var arr = [];
@@ -14293,14 +14292,12 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(lib_pagination_defaul
             }
           }
 
-          _this.$set(_this, 'pageList', arr);
+          _this.$set(_this, 'pageList', arr); // console.log('二阶段耗时',new Date().getTime()-this.start,this.pageList);
 
-          console.log('二阶段耗时', new Date().getTime() - _this.start, _this.pageList);
 
           _this.$nextTick(function () {
-            _this.$store.commit('setPageChange', _this.keys);
+            _this.$store.commit('setPageChange', _this.keys); // console.log('三阶段耗时',new Date().getTime(),new Date().getTime()-this.start);
 
-            console.log('三阶段耗时', new Date().getTime(), new Date().getTime() - _this.start);
           });
         }); // console.log('分页信息 ',this.pageList)
       }
@@ -14431,8 +14428,8 @@ function normalizeComponent (
 
 var component = normalizeComponent(
   components_table_bodyvue_type_script_lang_js_,
-  table_bodyvue_type_template_id_da8635ea_render,
-  table_bodyvue_type_template_id_da8635ea_staticRenderFns,
+  table_bodyvue_type_template_id_de88f682_render,
+  table_bodyvue_type_template_id_de88f682_staticRenderFns,
   false,
   null,
   null,

@@ -90,7 +90,7 @@ export default {
         this.oldChildLength= item.children==null?0:item.children.length;
         // console.log(keys,item.displayName,this.item)
         // console.log(2,this.open,this.item.id,this.item.displayName)
-        console.log('段耗时', item[this.name],keys,this.open,new Date().getTime());
+        // console.log('段耗时', item[this.name],keys,this.open,new Date().getTime());
         // return(
         //     <div>fdsfdsfsdf</div>
         // )
@@ -133,9 +133,8 @@ export default {
     },
     created(){
         if(this.expanded!=''){
-            // this.open= this.item[this.expanded]?true:false;
+            this.open= this.item[this.expanded]?true:false;
         }
-        console.log('created',this.open);
         if(this.item[this.childenname]==null){
             this.$set(this.item,this.childenname,[]);
         }

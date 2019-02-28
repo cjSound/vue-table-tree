@@ -109,15 +109,13 @@ export default {
     },
     methods:{
         minPageChange(){
-            console.log('setPageChange',this.keys,this.pageIndex)
+            // console.log('setPageChange',this.keys,this.pageIndex)
             this.$store.commit('setPageChange',{keys:this.keys,pageIndex:this.pageIndex});
         },
         init(num){
             var page =this.pageNum;
             this.start =new Date().getTime();
-            console.log('start',this.start)
             if(this.dataList.length>page){
-                console.log('要分页的')
                 this.$nextTick(()=>{
                     var index =num==null?this.pageIndex:num;
                     
@@ -131,10 +129,10 @@ export default {
                         }
                     }
                     this.$set(this,'pageList',arr);
-                    console.log('二阶段耗时',new Date().getTime()-this.start,this.pageList);
+                    // console.log('二阶段耗时',new Date().getTime()-this.start,this.pageList);
                     this.$nextTick(()=>{
                         this.$store.commit('setPageChange',this.keys);
-                        console.log('三阶段耗时',new Date().getTime(),new Date().getTime()-this.start);
+                        // console.log('三阶段耗时',new Date().getTime(),new Date().getTime()-this.start);
                     })
                 });
                 // console.log('分页信息 ',this.pageList)
