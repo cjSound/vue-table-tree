@@ -3,7 +3,7 @@ import tableBody from  './table-body'
 export default {
     components:{tableBody},
     computed:{
-        ...mapGetters(['pageNum','expanded','childenname','name']),
+        ...mapGetters(['pageNum','expanded','childenname','name','childrenNum']),
     },
     props: {
         slotMap:{
@@ -69,7 +69,7 @@ export default {
     },
     data(){
         return {
-            open:true,
+            open:false,
             plugItem:{
                 closed:false
             },
@@ -90,7 +90,10 @@ export default {
         this.oldChildLength= item.children==null?0:item.children.length;
         // console.log(keys,item.displayName,this.item)
         // console.log(2,this.open,this.item.id,this.item.displayName)
-        console.log('段耗时', item[this.name],keys,new Date().getTime());
+        console.log('段耗时', item[this.name],keys,this.open,new Date().getTime());
+        // return(
+        //     <div>fdsfdsfsdf</div>
+        // )
         return (
             <div>
                 <div class={{'tab-row':true,'last-child':item.children==null || item.children.length ==0}}>
@@ -118,6 +121,7 @@ export default {
                     ( this.watchChange &&this.open && item.children!=null && item.children.length) >0? 
                     <tableBody  class={{'tabody':true,'ishidden':!this.open}}   slotMap ={this.slotMap}  
                         dataList={item.children}
+                        pageTotal={item[this.childrenNum]}
                         width-array={this.widthArray}
                         step={this.step } left={this.left+this.step}
                         keys={keys} >
@@ -129,8 +133,9 @@ export default {
     },
     created(){
         if(this.expanded!=''){
-            this.open= this.item[this.expanded]?true:false;
+            // this.open= this.item[this.expanded]?true:false;
         }
+        console.log('created',this.open);
         if(this.item[this.childenname]==null){
             this.$set(this.item,this.childenname,[]);
         }

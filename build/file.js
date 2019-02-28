@@ -13,7 +13,9 @@ function transData(a, idStr, pidStr, chindrenStr){
         var aVal = a[j], hashVP = hash[aVal[pid]];
         if(hashVP&&aVal){
             !hashVP[children] && (hashVP[children] = []);
-            if(hashVP[children].length<5000)hashVP[children].push(aVal);
+            // aVal.isExpanded =false;
+            if(hashVP[children].length<5000)
+            hashVP[children].push(aVal);
         }else{
             r.push(aVal);
         }
@@ -24,4 +26,4 @@ console.log(bigdata.INITIAL_VALUE)
 var list =transData(bigdata.INITIAL_VALUE,'id', 'pid', 'children');
 
 // console.log(JSON.stringify(a))
-fs.writeFileSync('D:\ccc.js', 'var bigdata ='+JSON.stringify(list), 'utf8');
+fs.writeFileSync('D:\\project\\plug\\vue-table-tree\\public\\closefile.js', 'var bigdata ='+JSON.stringify(list), 'utf8');

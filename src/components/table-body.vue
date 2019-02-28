@@ -6,6 +6,13 @@
                 :step="step" :left="left" :keys="keys"
                 :item ="item"  >
             </table-item>
+            <el-pagination v-if="pageTotal>pageNum"
+                :current-page.sync="pageIndex"
+                :page-size="pageNum"
+                @current-change="minPageChange"
+                layout="total,prev, pager, next"
+                :total="pageTotal">
+            </el-pagination>
         </div>
         
         <div class="table-page" v-else> 
@@ -36,7 +43,7 @@ Vue.use(Pagination)
 export default {
     name:'tableBody',
     computed:{
-        ...mapGetters(['pageNum']),
+        ...mapGetters(['pageNum','childrenNum']),
     },
     created(){
     },
@@ -74,6 +81,9 @@ export default {
                 return  []
             }
         },
+        pageTotal:{
+            type:Number
+        },
         widthArray:{
             type:Array,
             default:function(){
@@ -98,10 +108,16 @@ export default {
         }
     },
     methods:{
+        minPageChange(){
+            console.log('setPageChange',this.keys,this.pageIndex)
+            this.$store.commit('setPageChange',{keys:this.keys,pageIndex:this.pageIndex});
+        },
         init(num){
             var page =this.pageNum;
             this.start =new Date().getTime();
+            console.log('start',this.start)
             if(this.dataList.length>page){
+                console.log('要分页的')
                 this.$nextTick(()=>{
                     var index =num==null?this.pageIndex:num;
                     

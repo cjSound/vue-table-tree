@@ -5,7 +5,7 @@
             <div class="row-item" v-for="(item,index) in titleArray" :style="{'width':widthArray[index+1]+'%'}">{{item}}</div>
         </div>
         <table-body  v-if="open" class="tabody" :pid="rootKey" :slotMap ="$scopedSlots"  :dataList="dataList" 
-            :width-array="widthArray"   :left="left" :step="left"
+            :width-array="widthArray"   :left="left" :step="left" :pageTotal="dataList.length"
             :keys="keys"  
             :id="id"  :parentKey="parentKey">
         </table-body>
@@ -64,6 +64,10 @@ export default {
             type:String,
             default:'pid'
         },
+        childrenNum:{
+            type:String,
+            default:'childrenNum'
+        },
         childenname:{
             type:String,
             default:'children'
@@ -107,6 +111,7 @@ export default {
             this.$store.commit('setWidths',this.widths);
             this.$store.commit('setExpanded',this.expanded);
             this.$store.commit('setClosed',this.closed);
+            this.$store.commit('setChildrenNum',this.childrenNum);
             
             
             this.open=true;

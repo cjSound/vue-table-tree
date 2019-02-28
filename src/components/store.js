@@ -17,7 +17,8 @@ const store = new Vuex.Store({
       pageChange:{
         index:0,
         keys:[]
-      }
+      },
+      childrenNum:''
 
     },
     mutations: {
@@ -46,6 +47,9 @@ const store = new Vuex.Store({
       setClosed:function(state,info){
         state.closed=info;
       },
+      setChildrenNum:function(state,info){
+        state.childrenNum=info;
+      },
     },
     actions: {
   
@@ -58,7 +62,8 @@ const store = new Vuex.Store({
         name: state=>state.name,
         expanded:state=>state.expanded,
         pageChange:state=>state.pageChange,
-        closed:state=>state.closed
+        closed:state=>state.closed,
+        childrenNum:state=>state.childrenNum
         
         
     }
