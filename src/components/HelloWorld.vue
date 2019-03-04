@@ -85,6 +85,7 @@ export default {
 						var num =0,nowList=values[i].children;
 						arr.push({key:keys.concat(i),value:values[i].children});
 						values[i].children=nowList.slice(0,this.pageNum);
+						this.keyset(arr,keys.concat(i),nowList);
 					}else{
 						var k =keys.concat(i);
 						this.keyset(arr,k,values[i].children);
@@ -95,6 +96,7 @@ export default {
 		getinfo(key,item){
 			var keys =[].concat(key);
 			var index =keys.splice(0,1)[0];
+			index =index>this.pageNum?index%this.pageNum:index;
 			if(keys.length>0){
 				return this.getinfo(keys,item[index].children);
 			}else{
