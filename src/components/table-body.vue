@@ -1,6 +1,6 @@
 <template >
     <div  v-if="pageNum>0">
-        <div v-if="dataList.length<=pageNum" >
+        <div  >
             <table-item  v-for="(item,index) in dataList" :key="(pageIndex-1)*pageNum+index" :index="(pageIndex-1)*pageNum+index" 
                 :width-array="widthArray"     :slotMap ="slotMap"
                 :step="step" :left="left" :keys="keys"  
@@ -15,7 +15,7 @@
             </el-pagination>
         </div>
         
-        <div class="table-page" v-else> 
+        <!-- <div class="table-page" v-else> 
             <table-item  v-if="pageList.length>0 " v-for="(item,index) in pageList" :key="item.tableIndex" :index="item.tableIndex" 
                 :width-array="widthArray"    :slotMap ="slotMap"
                 :step="step" :left="left" :keys="keys"  :pageIndex="pageIndex"
@@ -29,7 +29,7 @@
             layout="total,prev, pager, next"
             :total="dataList.length">
             </el-pagination>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -109,7 +109,7 @@ export default {
     },
     methods:{
         minPageChange(){
-            // console.log('setPageChange',this.keys,this.pageIndex)
+            // console.log('minPageChange',this.keys,this.pageIndex)
             this.$store.commit('setPageChange',{keys:this.keys,pageIndex:this.pageIndex});
         },
         init(num){
@@ -131,7 +131,7 @@ export default {
                     this.$set(this,'pageList',arr);
                     // console.log('二阶段耗时',new Date().getTime()-this.start,this.pageList);
                     this.$nextTick(()=>{
-                        this.$store.commit('setPageChange',this.keys);
+                        // this.$store.commit('setPageChange',this.keys);
                         // console.log('三阶段耗时',new Date().getTime(),new Date().getTime()-this.start);
                     })
                 });
@@ -151,7 +151,7 @@ export default {
         },
     },
     mounted(){
-        this.init();
+        // this.init();
     }
 }
 </script>
