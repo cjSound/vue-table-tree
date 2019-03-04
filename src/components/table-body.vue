@@ -1,9 +1,9 @@
 <template >
     <div  v-if="pageNum>0">
         <div v-if="dataList.length<=pageNum" >
-            <table-item  v-for="(item,index) in dataList" :key="index" :index="index" 
+            <table-item  v-for="(item,index) in dataList" :key="(pageIndex-1)*pageNum+index" :index="(pageIndex-1)*pageNum+index" 
                 :width-array="widthArray"     :slotMap ="slotMap"
-                :step="step" :left="left" :keys="keys"
+                :step="step" :left="left" :keys="keys"  
                 :item ="item"  >
             </table-item>
             <el-pagination v-if="pageTotal>pageNum"
@@ -18,7 +18,7 @@
         <div class="table-page" v-else> 
             <table-item  v-if="pageList.length>0 " v-for="(item,index) in pageList" :key="item.tableIndex" :index="item.tableIndex" 
                 :width-array="widthArray"    :slotMap ="slotMap"
-                :step="step" :left="left" :keys="keys"  
+                :step="step" :left="left" :keys="keys"  :pageIndex="pageIndex"
                 :item ="item"  >
             </table-item>
 

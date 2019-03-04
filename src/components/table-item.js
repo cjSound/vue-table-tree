@@ -42,7 +42,7 @@ export default {
             default:function(){
                 return  []
             }
-        },
+        } 
     },
     watch:{
         item:{
