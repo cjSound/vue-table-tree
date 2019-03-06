@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <script src="./../public/ccc.js"></script>
+    <script src="./../public/closefile.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
     </head>
     <style>
@@ -35,8 +35,6 @@
     <script src="./../dist/vue-lazy-table-tree.umd.min.js"></script>
     
     <script>
-
-
         new Vue({
             el: '#app',
             data(){
@@ -48,13 +46,15 @@
                     saveList:''
                 }
             },
-            methods:{
+            methods: {
                 pageChange(info){
                     console.log('分页改变了',info);
                     var key =info.keys.join('-');
+                    console.log(this.saveList,key)
                     var list =this.saveList[key].slice((info.pageIndex-1)*this.pageNum,info.pageIndex*this.pageNum);
                     var item =this.getinfo(info.keys,this.bigdata);
                     this.$set(item,'children',list);	
+                    
                 },
                 transData(a, idStr, pidStr, chindrenStr){
                     var r = [], hash = {}, id = idStr, pid = pidStr, children = chindrenStr, i = 0, j = 0, len = (a==undefined ? 0 :a.length);
@@ -74,8 +74,16 @@
                     return r;
                 },
                 test(item,keys,closed) {
+                    this.$set(this.dataList[0].children[0].children[0].children[2].children[0].children[0].children[1],'children',data2);
+                    // this.$set(this.dataList[0].children[0].children[0].children[0],'children',data2);
+                    // var item =this.dataList[0].children[0].children[1];
+                    // this.$set(this.dataList[0].children[0].children[1].children[0].children[0],'children',[data3]);
                     console.log(item,keys);
                     closed.closed =true;
+                    // this.$set(item,'children',item.children.concat(data2))
+                    // this.$set(this.dataList[0].children[0].children[1],'displayType','fadfs')
+                    // this.$set(this.dataList[0].children[0].children[1],'children',[])
+                    // console.log(this.dataList)
                 },
                 test1(item,keys,closed){
                     closed.closed =false;
@@ -87,6 +95,7 @@
                                 var num =0,nowList=values[i].children;
                                 arr.push({key:keys.concat(i),value:values[i].children});
                                 values[i].children=nowList.slice(0,this.pageNum);
+                                this.keyset(arr,keys.concat(i),nowList);
                             }else{
                                 var k =keys.concat(i);
                                 this.keyset(arr,k,values[i].children);
@@ -97,16 +106,19 @@
                 getinfo(key,item){
                     var keys =[].concat(key);
                     var index =keys.splice(0,1)[0];
+                    index =index>this.pageNum?index%this.pageNum:index;
                     if(keys.length>0){
                         return this.getinfo(keys,item[index].children);
                     }else{
                         return  item[index];
                     }
                 },
-                    },
-            mounted(){
-                var arr =[];
-                this.keyset(arr,[],bigdata);
+        },
+        mounted(){
+            
+            var arr =[];
+            this.keyset(arr,[],bigdata);
+            
                 this.bigdata=bigdata;
                 var map ={};
                 for(var i =0;i<arr.length;i++){
@@ -114,7 +126,7 @@
                 }
                 this.saveList =map;
                 console.log(this.saveList ,this.bigdata)
-            }
+        }
         })
     </script>
 </html>
