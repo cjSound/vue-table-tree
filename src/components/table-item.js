@@ -50,10 +50,10 @@ export default {
                 // console.log('item ',newVal[this.name],newVal,this.oldChildLength,newVal[this.childenname])
                 if(newVal[this.childenname]!=null &&
                     (this.oldChildLength !=newVal[this.childenname].length)){
-                    this.watchChange =false;
-                    this.$nextTick(()=>{
-                        this.watchChange =true;
-                    })
+                    // this.watchChange =false;
+                    // this.$nextTick(()=>{
+                    //     this.watchChange =true;
+                    // })
                 }
             },
             deep:true
@@ -88,12 +88,6 @@ export default {
         const closed=this.plugItem;
         
         this.oldChildLength= item.children==null?0:item.children.length;
-        // console.log(keys,item.displayName,this.item)
-        // console.log(2,this.open,this.item.id,this.item.displayName)
-        // console.log('段耗时', item[this.name],keys,this.open,new Date().getTime());
-        // return(
-        //     <div>fdsfdsfsdf</div>
-        // )
         return (
             <div>
                 <div class={{'tab-row':true,'last-child':item.children==null || item.children.length ==0}}>
@@ -118,7 +112,7 @@ export default {
                     })}
                 </div>
                 {
-                    ( this.watchChange &&this.open && item.children!=null && item.children.length) >0? 
+                    (this.open && item.children!=null && item.children.length) >0? 
                     <tableBody  class={{'tabody':true,'ishidden':!this.open}}   slotMap ={this.slotMap}  
                         dataList={item.children}
                         pageTotal={item[this.childrenNum]}

@@ -40,9 +40,10 @@ export default {
 		pageChange(info){
 			console.log('分页改变了',info);
 			var key =info.keys.join('-');
-			console.log(this.saveList,key)
+			
 			var list =this.saveList[key].slice((info.pageIndex-1)*this.pageNum,info.pageIndex*this.pageNum);
 			var item =this.getinfo(info.keys,this.bigdata);
+			console.log(this.saveList,key,item,list)
 			this.$set(item,'children',list);	
 			
 		},

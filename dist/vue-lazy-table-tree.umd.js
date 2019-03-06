@@ -13141,12 +13141,12 @@ var store = new vuex_esm.Store({
   }
 });
 /* harmony default export */ var components_store = (store);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"c5a698de-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/table-body.vue?vue&type=template&id=fe1ea648&
-var table_bodyvue_type_template_id_fe1ea648_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.pageNum>0)?_c('div',[_c('div',[_vm._l((_vm.dataList),function(item,index){return _c('table-item',{key:(_vm.pageIndex-1)*_vm.pageNum+index,attrs:{"index":(_vm.pageIndex-1)*_vm.pageNum+index,"width-array":_vm.widthArray,"slotMap":_vm.slotMap,"step":_vm.step,"left":_vm.left,"keys":_vm.keys,"item":item}})}),(_vm.pageTotal>_vm.pageNum)?_c('el-pagination',{attrs:{"current-page":_vm.pageIndex,"page-size":_vm.pageNum,"layout":"total,prev, pager, next","total":_vm.pageTotal},on:{"update:currentPage":function($event){_vm.pageIndex=$event},"current-change":_vm.minPageChange}}):_vm._e()],2)]):_vm._e()}
-var table_bodyvue_type_template_id_fe1ea648_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"c5a698de-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/table-body.vue?vue&type=template&id=3edd0a07&
+var table_bodyvue_type_template_id_3edd0a07_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._l((_vm.dataList),function(item,index){return _c('table-item',{key:(_vm.pageIndex-1)*_vm.pageNum+index,attrs:{"index":(_vm.pageIndex-1)*_vm.pageNum+index,"width-array":_vm.widthArray,"slotMap":_vm.slotMap,"step":_vm.step,"left":_vm.left,"keys":_vm.keys,"item":item}})}),(_vm.pageTotal>_vm.pageNum)?_c('el-pagination',{attrs:{"current-page":_vm.pageIndex,"page-size":_vm.pageNum,"layout":"total,prev, pager, next","total":_vm.pageTotal},on:{"update:currentPage":function($event){_vm.pageIndex=$event},"current-change":_vm.minPageChange}}):_vm._e()],2)}
+var table_bodyvue_type_template_id_3edd0a07_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/table-body.vue?vue&type=template&id=fe1ea648&
+// CONCATENATED MODULE: ./src/components/table-body.vue?vue&type=template&id=3edd0a07&
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/symbol/iterator.js
 var iterator = __webpack_require__("5d58");
@@ -13241,14 +13241,11 @@ var lib_pagination_default = /*#__PURE__*/__webpack_require__.n(lib_pagination);
   watch: {
     item: {
       handler: function handler(newVal, oldVal) {
-        var _this = this;
-
         // console.log('item ',newVal[this.name],newVal,this.oldChildLength,newVal[this.childenname])
-        if (newVal[this.childenname] != null && this.oldChildLength != newVal[this.childenname].length) {
-          this.watchChange = false;
-          this.$nextTick(function () {
-            _this.watchChange = true;
-          });
+        if (newVal[this.childenname] != null && this.oldChildLength != newVal[this.childenname].length) {// this.watchChange =false;
+          // this.$nextTick(()=>{
+          //     this.watchChange =true;
+          // })
         }
       },
       deep: true
@@ -13274,7 +13271,7 @@ var lib_pagination_default = /*#__PURE__*/__webpack_require__.n(lib_pagination);
     };
   },
   render: function render(h) {
-    var _this2 = this;
+    var _this = this;
 
     this.keyArray = this.keys.concat(this.index);
     var key = this.name;
@@ -13283,13 +13280,7 @@ var lib_pagination_default = /*#__PURE__*/__webpack_require__.n(lib_pagination);
     var widthArray = this.widthArray;
     var keys = this.keys.concat(this.index);
     var closed = this.plugItem;
-    this.oldChildLength = item.children == null ? 0 : item.children.length; // console.log(keys,item.displayName,this.item)
-    // console.log(2,this.open,this.item.id,this.item.displayName)
-    // console.log('段耗时', item[this.name],keys,this.open,new Date().getTime());
-    // return(
-    //     <div>fdsfdsfsdf</div>
-    // )
-
+    this.oldChildLength = item.children == null ? 0 : item.children.length;
     return h("div", [h("div", {
       "class": {
         'tab-row': true,
@@ -13299,7 +13290,7 @@ var lib_pagination_default = /*#__PURE__*/__webpack_require__.n(lib_pagination);
       "class": "row-item",
       "on": {
         "click": function click() {
-          return _this2.showTog();
+          return _this.showTog();
         }
       },
       "style": {
@@ -13326,7 +13317,7 @@ var lib_pagination_default = /*#__PURE__*/__webpack_require__.n(lib_pagination);
         keys: keys,
         closed: closed
       })]);
-    })]), (this.watchChange && this.open && item.children != null && item.children.length) > 0 ? h(table_body, {
+    })]), (this.open && item.children != null && item.children.length) > 0 ? h(table_body, {
       "class": {
         'tabody': true,
         'ishidden': !this.open
@@ -13370,8 +13361,6 @@ var lib_pagination_default = /*#__PURE__*/__webpack_require__.n(lib_pagination);
 
 
 
-//
-//
 //
 //
 //
@@ -13503,13 +13492,8 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(lib_pagination_defaul
             }
           }
 
-          _this.$set(_this, 'pageList', arr); // console.log('二阶段耗时',new Date().getTime()-this.start,this.pageList);
-
-
-          _this.$nextTick(function () {// this.$store.commit('setPageChange',this.keys);
-            // console.log('三阶段耗时',new Date().getTime(),new Date().getTime()-this.start);
-          });
-        }); // console.log('分页信息 ',this.pageList)
+          _this.$set(_this, 'pageList', arr);
+        });
       }
     },
     cloneObj: function cloneObj(obj) {
@@ -13637,8 +13621,8 @@ function normalizeComponent (
 
 var component = normalizeComponent(
   components_table_bodyvue_type_script_lang_js_,
-  table_bodyvue_type_template_id_fe1ea648_render,
-  table_bodyvue_type_template_id_fe1ea648_staticRenderFns,
+  table_bodyvue_type_template_id_3edd0a07_render,
+  table_bodyvue_type_template_id_3edd0a07_staticRenderFns,
   false,
   null,
   null,
