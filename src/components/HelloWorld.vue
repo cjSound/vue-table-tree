@@ -103,26 +103,6 @@ export default {
 				return  item[index];
 			}
 		},
-		keySetChild(arr){
-			
-			var index =0;
-			var inttime =setInterval(()=>{
-				console.log(index,arr.length)
-				if(index>=arr.length){
-					clearInterval(inttime);
-				}else{
-					console.log(index,arr[index].key,new Date().getTime())
-					var item =getinfo(arr[index].key,this.bigdata);
-					if(item.children==null  || item.children.length==0){
-						this.$set(item,'children',arr[index].value);	
-					}else{
-						item.children.push(arr[index].value);
-					}
-					console.log(index,arr[index].value,item,new Date().getTime());
-					index++;
-				}
-			},2000);
-		}
   },
   mounted(){
 	  
@@ -136,9 +116,6 @@ export default {
 		}
 		this.saveList =map;
 		console.log(this.saveList ,this.bigdata)
-
-
-	
   }
 }
 </script>
