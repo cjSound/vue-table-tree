@@ -13327,7 +13327,7 @@ var lib_pagination_default = /*#__PURE__*/__webpack_require__.n(lib_pagination);
         keys: keys,
         closed: closed
       })]);
-    })]), (this.open && item.children != null && item.children.length) > 0 ? h(table_body, {
+    })]), (item.children != null && item.children.length) > 0 ? h(table_body, {
       "class": {
         'tabody': true,
         'ishidden': !this.open

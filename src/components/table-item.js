@@ -116,7 +116,7 @@ export default {
                     })}
                 </div>
                 {
-                    (this.open && item.children!=null && item.children.length) >0? 
+                    (item.children!=null && item.children.length) >0? 
                     <tableBody  class={{'tabody':true,'ishidden':!this.open}}   slotMap ={this.slotMap}  
                         dataList={item.children}
                         keytokin={this.keytokin}
