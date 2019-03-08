@@ -15,6 +15,9 @@ export default {
         item: {
             required: true
         },
+        keytokin:{
+            type:String
+        },
         index:{
             required:true
         },
@@ -87,6 +90,7 @@ export default {
         const keys =this.keys.concat(this.index);
         const closed=this.plugItem;
         
+        
         this.oldChildLength= item.children==null?0:item.children.length;
         return (
             <div>
@@ -115,6 +119,7 @@ export default {
                     (this.open && item.children!=null && item.children.length) >0? 
                     <tableBody  class={{'tabody':true,'ishidden':!this.open}}   slotMap ={this.slotMap}  
                         dataList={item.children}
+                        keytokin={this.keytokin}
                         pageTotal={item[this.childrenNum]}
                         width-array={this.widthArray}
                         step={this.step } left={this.left+this.step}

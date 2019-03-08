@@ -6,6 +6,7 @@
         </div>
         <table-body  v-if="open" class="tabody" :pid="rootKey" :slotMap ="$scopedSlots"  :dataList="dataList" 
             :width-array="widthArray"   :left="left" :step="left" :pageTotal="dataList.length"
+            :keytokin="keytokin"
             :keys="keys"  
             :id="id"  :parentKey="parentKey">
         </table-body>
@@ -20,12 +21,14 @@ export default {
     components:{tableBody},
     store,
     computed:{
-        ...mapGetters(['pageChange']),
+        ...mapGetters(['pageChange','plugNum']),
     },
     watch:{
         pageChange:{
             handler:function(newVal,oldVal){
-                this.$emit('pagechange',newVal.keys);
+                if(newVal.keys.keytokin ==this.keytokin){
+                    this.$emit('pagechange',newVal.keys);
+                }
             },
             deep:true
         }
@@ -99,6 +102,7 @@ export default {
             widthArray:[],
             titleArray:[],
             open:false,
+            keytokin:'',
             keys:[]
         }
     },
@@ -112,13 +116,13 @@ export default {
             this.$store.commit('setExpanded',this.expanded);
             this.$store.commit('setClosed',this.closed);
             this.$store.commit('setChildrenNum',this.childrenNum);
-            
-            
             this.open=true;
         }
     },
     mounted(){
         var _this =this ;
+        this.keytokin ='tabletree-' +this.plugNum;
+        this.$store.commit('setPlugNum');
         var slots   =this.$scopedSlots;
         this.titleArray =Object.keys(slots);
         this.$nextTick(()=>{

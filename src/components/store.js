@@ -7,6 +7,7 @@ const store = new Vuex.Store({
     // 初始化 vuex
     state: {
       pageNum:10,
+      plugNum:1,
       left:10,
       childenname:'',
       name:'',
@@ -24,6 +25,9 @@ const store = new Vuex.Store({
     mutations: {
       setPageNum:function(state,info){
         state.pageNum=info;
+      },
+      setPlugNum:function(state,info){
+        state.plugNum++;
       },
       setLeft:function(state,info){
         state.left=info;
@@ -55,6 +59,7 @@ const store = new Vuex.Store({
   
     },
     getters: {
+        plugNum:state=>state.plugNum,
         pageNum: state=>state.pageNum,
         left: state=>state.left,
         widths: state=>state.widths,

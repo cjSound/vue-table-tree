@@ -3,6 +3,7 @@
         <table-item  v-for="(item,index) in dataList" :key="(pageIndex-1)*pageNum+index" :index="(pageIndex-1)*pageNum+index" 
             :width-array="widthArray"     :slotMap ="slotMap"
             :step="step" :left="left" :keys="keys"  
+            :keytokin="keytokin"
             :item ="item"  >
         </table-item>
         <el-pagination v-if="pageTotal>pageNum"
@@ -82,6 +83,9 @@ export default {
         pageTotal:{
             type:Number
         },
+        keytokin:{
+            type:String
+        },
         widthArray:{
             type:Array,
             default:function(){
@@ -107,8 +111,8 @@ export default {
     },
     methods:{
         minPageChange(){
-            // console.log('minPageChange',this.keys,this.pageIndex)
-            this.$store.commit('setPageChange',{keys:this.keys,pageIndex:this.pageIndex});
+            // console.log('setPageChange',this.keys,this.pageIndex)
+            this.$store.commit('setPageChange',{keys:this.keys,pageIndex:this.pageIndex,keytokin:this.keytokin});
         },
         init(num){
             var page =this.pageNum;

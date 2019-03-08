@@ -14,6 +14,20 @@
 				<span @click="test1(item,keys,closed)">删除</span>
 			</div>
 		</table-tree>
+		fdskfjsdlf sdfjsdf 	11111111111111111
+		<table-tree v-if="bigdata.length>0" :data-list="bigdata2"   :name="'displayName'" 
+			:expanded="'isExpanded'"
+			:childrenNum="'childrenNum'"
+			:closed="'closed'"
+			:left='10' :page="pageNum" @pagechange="pageChange2"
+			   title="值" class="table">
+			<div slot="类型"  slot-scope="{item}">{{item.displayType}}</div>
+			<div slot="值" slot-scope="{item}">{{item.value}}</div>
+			<div slot="操作" slot-scope="{item,keys,closed}">
+				<span @click="test(item,keys,closed)">新增</span>
+				<span @click="test1(item,keys,closed)">删除</span>
+			</div>
+		</table-tree>
 	</div>
 </template>
 
@@ -31,6 +45,7 @@ export default {
 		return {
       		// dataList: data,
 			bigdata :[],
+			bigdata2:[],
 			pageNum:10,
 			widths:[40,20,20,20],
 			saveList:''
@@ -46,6 +61,9 @@ export default {
 			console.log(this.saveList,key,item,list)
 			this.$set(item,'children',list);	
 			
+		},
+		pageChange2(info){
+			console.log('分页改变了2',info);
 		},
 		transData(a, idStr, pidStr, chindrenStr){
 			var r = [], hash = {}, id = idStr, pid = pidStr, children = chindrenStr, i = 0, j = 0, len = (a==undefined ? 0 :a.length);
@@ -111,6 +129,7 @@ export default {
 	  this.keyset(arr,[],bigdata);
 	  
 		this.bigdata=bigdata;
+		this.bigdata2=bigdata.concat([]);
 		var map ={};
 		for(var i =0;i<arr.length;i++){
 			map[arr[i].key.join('-')]=arr[i].value;

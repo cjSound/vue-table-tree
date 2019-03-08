@@ -5633,7 +5633,7 @@ exports.f = {}.propertyIsEnumerable;
 /***/ "52b4":
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "img/iconfont.cd01b16b.svg";
+module.exports = __webpack_require__.p + "img/iconfont.ff540053.svg";
 
 /***/ }),
 
@@ -12103,12 +12103,12 @@ var web_dom_iterable = __webpack_require__("ac6a");
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"c5a698de-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/table-tree.vue?vue&type=template&id=7b1cbc98&
-var table_treevue_type_template_id_7b1cbc98_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"table-tree"},[(_vm.widthArray.length>0)?_c('div',{staticClass:"tab-row table-tree-header"},[_c('div',{staticClass:"row-item",style:({'width':_vm.widthArray[0]+'%'})},[_vm._v("  "+_vm._s(_vm.title))]),_vm._l((_vm.titleArray),function(item,index){return _c('div',{staticClass:"row-item",style:({'width':_vm.widthArray[index+1]+'%'})},[_vm._v(_vm._s(item))])})],2):_vm._e(),(_vm.open)?_c('table-body',{staticClass:"tabody",attrs:{"pid":_vm.rootKey,"slotMap":_vm.$scopedSlots,"dataList":_vm.dataList,"width-array":_vm.widthArray,"left":_vm.left,"step":_vm.left,"pageTotal":_vm.dataList.length,"keys":_vm.keys,"id":_vm.id,"parentKey":_vm.parentKey}}):_vm._e()],1)}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"c5a698de-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/table-tree.vue?vue&type=template&id=68729b70&
+var table_treevue_type_template_id_68729b70_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"table-tree"},[(_vm.widthArray.length>0)?_c('div',{staticClass:"tab-row table-tree-header"},[_c('div',{staticClass:"row-item",style:({'width':_vm.widthArray[0]+'%'})},[_vm._v("  "+_vm._s(_vm.title))]),_vm._l((_vm.titleArray),function(item,index){return _c('div',{staticClass:"row-item",style:({'width':_vm.widthArray[index+1]+'%'})},[_vm._v(_vm._s(item))])})],2):_vm._e(),(_vm.open)?_c('table-body',{staticClass:"tabody",attrs:{"pid":_vm.rootKey,"slotMap":_vm.$scopedSlots,"dataList":_vm.dataList,"width-array":_vm.widthArray,"left":_vm.left,"step":_vm.left,"pageTotal":_vm.dataList.length,"keytokin":_vm.keytokin,"keys":_vm.keys,"id":_vm.id,"parentKey":_vm.parentKey}}):_vm._e()],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/table-tree.vue?vue&type=template&id=7b1cbc98&
+// CONCATENATED MODULE: ./src/components/table-tree.vue?vue&type=template&id=68729b70&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.number.constructor.js
 var es6_number_constructor = __webpack_require__("c5f6");
@@ -13057,6 +13057,7 @@ var store = new vuex_esm.Store({
   // 初始化 vuex
   state: {
     pageNum: 10,
+    plugNum: 1,
     left: 10,
     childenname: '',
     name: '',
@@ -13073,6 +13074,9 @@ var store = new vuex_esm.Store({
   mutations: {
     setPageNum: function setPageNum(state, info) {
       state.pageNum = info;
+    },
+    setPlugNum: function setPlugNum(state, info) {
+      state.plugNum++;
     },
     setLeft: function setLeft(state, info) {
       state.left = info;
@@ -13102,6 +13106,9 @@ var store = new vuex_esm.Store({
   },
   actions: {},
   getters: {
+    plugNum: function plugNum(state) {
+      return state.plugNum;
+    },
     pageNum: function pageNum(state) {
       return state.pageNum;
     },
@@ -13132,12 +13139,12 @@ var store = new vuex_esm.Store({
   }
 });
 /* harmony default export */ var components_store = (store);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"c5a698de-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/table-body.vue?vue&type=template&id=3edd0a07&
-var table_bodyvue_type_template_id_3edd0a07_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._l((_vm.dataList),function(item,index){return _c('table-item',{key:(_vm.pageIndex-1)*_vm.pageNum+index,attrs:{"index":(_vm.pageIndex-1)*_vm.pageNum+index,"width-array":_vm.widthArray,"slotMap":_vm.slotMap,"step":_vm.step,"left":_vm.left,"keys":_vm.keys,"item":item}})}),(_vm.pageTotal>_vm.pageNum)?_c('el-pagination',{attrs:{"current-page":_vm.pageIndex,"page-size":_vm.pageNum,"layout":"total,prev, pager, next","total":_vm.pageTotal},on:{"update:currentPage":function($event){_vm.pageIndex=$event},"current-change":_vm.minPageChange}}):_vm._e()],2)}
-var table_bodyvue_type_template_id_3edd0a07_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"c5a698de-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/table-body.vue?vue&type=template&id=70a6dfc2&
+var table_bodyvue_type_template_id_70a6dfc2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._l((_vm.dataList),function(item,index){return _c('table-item',{key:(_vm.pageIndex-1)*_vm.pageNum+index,attrs:{"index":(_vm.pageIndex-1)*_vm.pageNum+index,"width-array":_vm.widthArray,"slotMap":_vm.slotMap,"step":_vm.step,"left":_vm.left,"keys":_vm.keys,"keytokin":_vm.keytokin,"item":item}})}),(_vm.pageTotal>_vm.pageNum)?_c('el-pagination',{attrs:{"current-page":_vm.pageIndex,"page-size":_vm.pageNum,"layout":"total,prev, pager, next","total":_vm.pageTotal},on:{"update:currentPage":function($event){_vm.pageIndex=$event},"current-change":_vm.minPageChange}}):_vm._e()],2)}
+var table_bodyvue_type_template_id_70a6dfc2_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/table-body.vue?vue&type=template&id=3edd0a07&
+// CONCATENATED MODULE: ./src/components/table-body.vue?vue&type=template&id=70a6dfc2&
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/symbol/iterator.js
 var iterator = __webpack_require__("5d58");
@@ -13199,6 +13206,9 @@ var lib_pagination_default = /*#__PURE__*/__webpack_require__.n(lib_pagination);
     },
     item: {
       required: true
+    },
+    keytokin: {
+      type: String
     },
     index: {
       required: true
@@ -13316,6 +13326,7 @@ var lib_pagination_default = /*#__PURE__*/__webpack_require__.n(lib_pagination);
       "attrs": {
         "slotMap": this.slotMap,
         "dataList": item.children,
+        "keytokin": this.keytokin,
         "pageTotal": item[this.childrenNum],
         "width-array": this.widthArray,
         "step": this.step,
@@ -13352,6 +13363,7 @@ var lib_pagination_default = /*#__PURE__*/__webpack_require__.n(lib_pagination);
 
 
 
+//
 //
 //
 //
@@ -13430,6 +13442,9 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(lib_pagination_defaul
     pageTotal: {
       type: Number
     },
+    keytokin: {
+      type: String
+    },
     widthArray: {
       type: Array,
       default: function _default() {
@@ -13457,10 +13472,11 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default.a.use(lib_pagination_defaul
   },
   methods: {
     minPageChange: function minPageChange() {
-      // console.log('minPageChange',this.keys,this.pageIndex)
+      // console.log('setPageChange',this.keys,this.pageIndex)
       this.$store.commit('setPageChange', {
         keys: this.keys,
-        pageIndex: this.pageIndex
+        pageIndex: this.pageIndex,
+        keytokin: this.keytokin
       });
     },
     init: function init(num) {
@@ -13612,8 +13628,8 @@ function normalizeComponent (
 
 var component = normalizeComponent(
   components_table_bodyvue_type_script_lang_js_,
-  table_bodyvue_type_template_id_3edd0a07_render,
-  table_bodyvue_type_template_id_3edd0a07_staticRenderFns,
+  table_bodyvue_type_template_id_70a6dfc2_render,
+  table_bodyvue_type_template_id_70a6dfc2_staticRenderFns,
   false,
   null,
   null,
@@ -13644,6 +13660,7 @@ component.options.__file = "table-body.vue"
 //
 //
 //
+//
 
 
 
@@ -13652,11 +13669,13 @@ component.options.__file = "table-body.vue"
     tableBody: table_body
   },
   store: components_store,
-  computed: _objectSpread({}, mapGetters(['pageChange'])),
+  computed: _objectSpread({}, mapGetters(['pageChange', 'plugNum'])),
   watch: {
     pageChange: {
       handler: function handler(newVal, oldVal) {
-        this.$emit('pagechange', newVal.keys);
+        if (newVal.keys.keytokin == this.keytokin) {
+          this.$emit('pagechange', newVal.keys);
+        }
       },
       deep: true
     }
@@ -13730,6 +13749,7 @@ component.options.__file = "table-body.vue"
       widthArray: [],
       titleArray: [],
       open: false,
+      keytokin: '',
       keys: []
     };
   },
@@ -13751,6 +13771,8 @@ component.options.__file = "table-body.vue"
 
     var _this = this;
 
+    this.keytokin = 'tabletree-' + this.plugNum;
+    this.$store.commit('setPlugNum');
     var slots = this.$scopedSlots;
     this.titleArray = keys_default()(slots);
     this.$nextTick(function () {
@@ -13785,7 +13807,7 @@ var table_treevue_type_style_index_0_lang_less_ = __webpack_require__("171f");
 
 var table_tree_component = normalizeComponent(
   components_table_treevue_type_script_lang_js_,
-  table_treevue_type_template_id_7b1cbc98_render,
+  table_treevue_type_template_id_68729b70_render,
   staticRenderFns,
   false,
   null,
