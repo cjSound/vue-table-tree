@@ -100,6 +100,13 @@ export default {
         },
     },
     components:{tableItem},
+    watch:{
+        pageTotal:function(newval,oldval){
+            // console.log('page',this.keytokin,arguments);
+            this.pageIndex=1;
+            this.minPageChange();
+        }
+    },
     data(){
         return{
             pageIndex:1,

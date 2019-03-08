@@ -34,6 +34,9 @@
 <script>
 import { data ,data2,data3} from './data.js'
 import tableTree from './table-tree'
+import { util } from 'common-util-js'
+
+
 
 export default {
 	name: 'HelloWorld',
@@ -83,7 +86,7 @@ export default {
 			return r;
 		},
 		test(item,keys,closed) {
-			this.$set(this.dataList[0].children[0].children[0].children[2].children[0].children[0].children[1],'children',data2);
+			this.$set(this.bigdata[0].children[0].children[4].children[0],'childrenNum',50);
 			// this.$set(this.dataList[0].children[0].children[0].children[0],'children',data2);
 			// var item =this.dataList[0].children[0].children[1];
 			// this.$set(this.dataList[0].children[0].children[1].children[0].children[0],'children',[data3]);
@@ -129,7 +132,7 @@ export default {
 	  this.keyset(arr,[],bigdata);
 	  
 		this.bigdata=bigdata;
-		this.bigdata2=bigdata.concat([]);
+		this.bigdata2=util.util.cloneObj(bigdata);
 		var map ={};
 		for(var i =0;i<arr.length;i++){
 			map[arr[i].key.join('-')]=arr[i].value;
