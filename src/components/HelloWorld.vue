@@ -14,20 +14,6 @@
 				<span @click="test1(item,keys,closed)">删除</span>
 			</div>
 		</table-tree>
-		fdskfjsdlf sdfjsdf 	11111111111111111
-		<table-tree v-if="bigdata.length>0" :data-list="bigdata2"   :name="'displayName'" 
-			:expanded="'isExpanded'"
-			:childrenNum="'childrenNum'"
-			:closed="'closed'"
-			:left='10' :page="pageNum" @pagechange="pageChange2"
-			   title="值" class="table">
-			<div slot="类型"  slot-scope="{item}">{{item.displayType}}</div>
-			<div slot="值" slot-scope="{item}">{{item.value}}</div>
-			<div slot="操作" slot-scope="{item,keys,closed}">
-				<span @click="test(item,keys,closed)">新增</span>
-				<span @click="test1(item,keys,closed)">删除</span>
-			</div>
-		</table-tree>
 	</div>
 </template>
 
@@ -86,12 +72,12 @@ export default {
 			return r;
 		},
 		test(item,keys,closed) {
-			this.$set(this.bigdata[0].children[0].children[4].children[0],'childrenNum',50);
+			// this.$set(this.bigdata[0].children[0].children[4].children[0],'childrenNum',50);
 			// this.$set(this.dataList[0].children[0].children[0].children[0],'children',data2);
 			// var item =this.dataList[0].children[0].children[1];
 			// this.$set(this.dataList[0].children[0].children[1].children[0].children[0],'children',[data3]);
-			console.log(item,keys);
-			closed.closed =true;
+			console.log(222,item,keys,closed);
+			// closed.closed =true;
 			// this.$set(item,'children',item.children.concat(data2))
 			// this.$set(this.dataList[0].children[0].children[1],'displayType','fadfs')
 			// this.$set(this.dataList[0].children[0].children[1],'children',[])

@@ -82,6 +82,7 @@ export default {
         }
     },
     render(h) {
+        // console.log('table -item init ',this.item[this.name])
         this.keyArray=this.keys.concat(this.index);
         const key =this.name;
         const item =this.item;
@@ -90,7 +91,7 @@ export default {
         const keys =this.keys.concat(this.index);
         const closed=this.plugItem;
         
-        
+        const params ={item,keys,closed};
         this.oldChildLength= item.children==null?0:item.children.length;
         return (
             <div>
@@ -111,7 +112,7 @@ export default {
                     </div>
                     {Object.keys(slotMap).map((i,index)=>{
                         return (
-                            <div class="row-item" style={{'width':widthArray[index+1]+'%'}}>{slotMap[i]({item,keys,closed})}</div>
+                            <div class="row-item" style={{'width':widthArray[index+1]+'%'}}>{slotMap[i](params)}</div>
                         )
                     })}
                 </div>
